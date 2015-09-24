@@ -5,7 +5,7 @@ int digits = 0;
 %}
 digit [0-9]
 %%
-{digit} ++digits;
+{digit} {++digits;}
 \n	++num_lines;++num_chars;
 .	++num_chars;
 %%
