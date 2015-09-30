@@ -5,13 +5,15 @@
 /*
  *  Stuff enclosed in %{ %} in the first section is copied verbatim to the
  *  output, so headers and global definitions are placed here to be visible
- * to the code in the file.  Don't remove anything that was here initially
+ *  to the code in the file.  Don't remove anything that was here initially
  */
+
+
 %{
 #include <cool-parse.h>
 #include <stringtab.h>
 #include <utilities.h>
-
+int ind = 0;
 /* The compiler assumes these identifiers. */
 #define yylval cool_yylval
 #define yylex  cool_yylex
@@ -36,18 +38,16 @@ char *string_buf_ptr;
 
 extern int curr_lineno;
 extern int verbose_flag;
-
 extern YYSTYPE cool_yylval;
 
 /*
- *  Add Your own definitions here
+ *  Create string tables
  */
 
 %}
 /*
  * Define names for regular expressions here.
  */
-DARROW          =>
 ELSE		(?i:else)
 CLASS		(?i:class)
 FALSE		f(?i:alse)
@@ -67,28 +67,19 @@ NEW		(?i:new)
 OF		(?i:of)
 NOT		(?i:not)
 TRUE		t(?i:rue)
-SPACE		"\f" | "\r" | "\t" | "\v" | " "
-NEW_LINE	"\n"+
-WHITE_SPACE	(SPACE)+
+SPACE		[\f\r\t\v\n]
 ALPHABET	[a-zA-Z]
 ALPHABET_UPPER	[A-Z]
 ALPHABET_LOWER	[a-z]
 DIGIT		[0-9]
 UNDERSCORE	_
-STRING		\"((ALPHABET|DIGIT|UNDERSCORE)|("\"[^n])|("\""\"n))*\"
-NUMBER		DIGIT+
-TYPEID		(ALPHABET_UPPER)(ALPHABET|DIGIT|UNDERSCORE)*
-OBJID		(ALPHABET_LOWER)(ALPHABET|DIGIT|UNDERSCORE)*
-ARITHMETIC_OP	"+" | "-" | "*" | "/"
-COMP_OP		"<" | "<=" | "=" | ">" | ">="
-PUNCT		";" | ":" | "," | "." | "@"
-PARAN		"(" | ")" | "{" | "}"
+NEW_LINE	"\n"
 %%
-{ARITHMETIC_OP}		{ return atoi(yytext); }
-{COMP_OP}		{ return atoi(yytext); }
-{PUNCT}			{ return atoi(yytext); }
-{PARAN}			{ return atoi(yytext); }
-{DARROW}		{ return (DARROW); }
+{SPACE}			{ ECHO;}
+{NEW_LINE}		{
+				curr_lineno++;
+				return '\n'; 
+			}
 {ELSE}			{ return (ELSE);   }
 {CLASS}			{ return (CLASS);  }
 {IF}			{ return (IF);}
@@ -106,47 +97,20 @@ PARAN		"(" | ")" | "{" | "}"
 {NEW}			{ return (NEW);}
 {OF}			{ return (OF);}
 {NOT}			{ return (NOT);}
-{NUMBER}		{ 	yylval.symbol = yytext;
+({DIGIT})+		{
 				return (INT_CONST);
 			}
-{STRING}		{	yylval.symbol = yytext;
-				return (STR_CONST);
-			}
-{ASSIGN}		{ 	return (ASSIGN);}
-{TRUE}			{ 	yylval.boolean = "true";
+{TRUE}			{ 	
 				return (BOOL_CONST);
 			}
-{FALSE}			{	yylval.boolean = "false";
-				return (BOOL_CONST); 
-			}
-{NEW_LINE}		{ 	curr_lineno++;
-				return (); 
-			}
-{TYPEID}		{	yylval.symbol = yytext;
-				return TYPE_ID;
-			}
-{SPACE}			{
-			}
-{ERROR}			{
-				/*
-					Adjust the pointer to move one char back!
-				*/
-				return ERROR;
-			}
- /*
-  * Keywords are case-insensitive except for the values true and false,
-  * which must begin with a lower-case letter.
-  */
+{FALSE}			{	return (BOOL_CONST); 	}
 
-
- /*
-  *  String constants (C syntax)
-  *  Escape sequence \c is accepted for all characters c. Except for 
-  *  \n \t \b \f, the result is c.
-  *
-  */
+{ALPHABET_LOWER}({ALPHABET}|{DIGIT}|{UNDERSCORE})*	{
+				cool_yylval.symbol = new Entry(strdup(yytext), strlen(yytext), ind++);
+				return (TYPEID);
+			}
+{ALPHABET_UPPER}({ALPHABET}|{DIGIT}|{UNDERSCORE})*	{
+				cool_yylval.symbol = new Entry(strdup(yytext), strlen(yytext), ind++);
+				return (OBJECTID);
+			}
 %%
-main()
-{	
-	return cool_yylex();
-}
