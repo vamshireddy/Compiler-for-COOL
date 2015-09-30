@@ -10,6 +10,7 @@
 
 
 %{
+#include <stdlib.h>
 #include <cool-parse.h>
 #include <stringtab.h>
 #include <utilities.h>
@@ -67,15 +68,27 @@ NEW		(?i:new)
 OF		(?i:of)
 NOT		(?i:not)
 TRUE		t(?i:rue)
-SPACE		[\f\r\t\v\n]
+SPACE		[\f\r\t\v ]
 ALPHABET	[a-zA-Z]
 ALPHABET_UPPER	[A-Z]
 ALPHABET_LOWER	[a-z]
 DIGIT		[0-9]
 UNDERSCORE	_
 NEW_LINE	"\n"
+PARAN		[\(\){}]
+ASSIGN		<-
 %%
-{SPACE}			{ ECHO;}
+" "			{ return ' '; }
+{ASSIGN}		{ return ASSIGN; }
+'='			{ return '='; }
+":"			{ return ':';}
+";"			{ return ';';}
+\"			{ return '"'; }
+\.			{ return '.'; }
+\{			{ return '{'; }
+\}			{ return '}'; }
+\(			{ return '('; }
+\)			{ return ')'; }
 {NEW_LINE}		{
 				curr_lineno++;
 				return '\n'; 
@@ -113,4 +126,6 @@ NEW_LINE	"\n"
 				cool_yylval.symbol = new Entry(strdup(yytext), strlen(yytext), ind++);
 				return (OBJECTID);
 			}
+{SPACE}			{	return ' ';      }
+.			{ 	return ERROR;	}
 %%
