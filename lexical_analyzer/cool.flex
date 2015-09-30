@@ -44,25 +44,95 @@ extern YYSTYPE cool_yylval;
  */
 
 %}
-
 /*
  * Define names for regular expressions here.
  */
-
 DARROW          =>
-
+ELSE		(?i:else)
+CLASS		(?i:class)
+FALSE		f(?i:alse)
+IF		(?i:if)
+FI		(?i:fi)
+IN		(?i:in)
+INHERITS	(?i:inherits)
+ISVOID		(?i:isvoid)
+LET		(?i:let)
+LOOP		(?i:loop)
+POOL		(?i:pool)
+THEN		(?i:then)
+WHILE		(?i:while)
+CASE		(?i:case)
+ESAC		(?i:esac)
+NEW		(?i:new)
+OF		(?i:of)
+NOT		(?i:not)
+TRUE		t(?i:rue)
+SPACE		"\f" | "\r" | "\t" | "\v" | " "
+NEW_LINE	"\n"+
+WHITE_SPACE	(SPACE)+
+ALPHABET	[a-zA-Z]
+ALPHABET_UPPER	[A-Z]
+ALPHABET_LOWER	[a-z]
+DIGIT		[0-9]
+UNDERSCORE	_
+STRING		\"((ALPHABET|DIGIT|UNDERSCORE)|("\"[^n])|("\""\"n))*\"
+NUMBER		DIGIT+
+TYPEID		(ALPHABET_UPPER)(ALPHABET|DIGIT|UNDERSCORE)*
+OBJID		(ALPHABET_LOWER)(ALPHABET|DIGIT|UNDERSCORE)*
+ARITHMETIC_OP	"+" | "-" | "*" | "/"
+COMP_OP		"<" | "<=" | "=" | ">" | ">="
+PUNCT		";" | ":" | "," | "." | "@"
+PARAN		"(" | ")" | "{" | "}"
 %%
-
- /*
-  *  Nested comments
-  */
-
-
- /*
-  *  The multiple-character operators.
-  */
+{ARITHMETIC_OP}		{ return atoi(yytext); }
+{COMP_OP}		{ return atoi(yytext); }
+{PUNCT}			{ return atoi(yytext); }
+{PARAN}			{ return atoi(yytext); }
 {DARROW}		{ return (DARROW); }
-
+{ELSE}			{ return (ELSE);   }
+{CLASS}			{ return (CLASS);  }
+{IF}			{ return (IF);}
+{FI}			{ return (FI);}
+{IN}			{ return (IN);}
+{INHERITS}		{ return (INHERITS);}
+{ISVOID}		{ return (ISVOID);}
+{LET}			{ return (LET);}
+{LOOP}			{ return (LOOP);}
+{POOL}			{ return (POOL);}
+{THEN}			{ return (THEN);}
+{WHILE}			{ return (WHILE);}
+{CASE}			{ return (CASE);}
+{ESAC}			{ return (ESAC);}
+{NEW}			{ return (NEW);}
+{OF}			{ return (OF);}
+{NOT}			{ return (NOT);}
+{NUMBER}		{ 	yylval.symbol = yytext;
+				return (INT_CONST);
+			}
+{STRING}		{	yylval.symbol = yytext;
+				return (STR_CONST);
+			}
+{ASSIGN}		{ 	return (ASSIGN);}
+{TRUE}			{ 	yylval.boolean = "true";
+				return (BOOL_CONST);
+			}
+{FALSE}			{	yylval.boolean = "false";
+				return (BOOL_CONST); 
+			}
+{NEW_LINE}		{ 	curr_lineno++;
+				return (); 
+			}
+{TYPEID}		{	yylval.symbol = yytext;
+				return TYPE_ID;
+			}
+{SPACE}			{
+			}
+{ERROR}			{
+				/*
+					Adjust the pointer to move one char back!
+				*/
+				return ERROR;
+			}
  /*
   * Keywords are case-insensitive except for the values true and false,
   * which must begin with a lower-case letter.
@@ -75,6 +145,8 @@ DARROW          =>
   *  \n \t \b \f, the result is c.
   *
   */
-
-
 %%
+main()
+{	
+	return cool_yylex();
+}
