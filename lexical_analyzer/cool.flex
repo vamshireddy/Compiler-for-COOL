@@ -40,12 +40,15 @@ char *string_buf_ptr;
 extern int curr_lineno;
 extern int verbose_flag;
 extern YYSTYPE cool_yylval;
+int quote = 0;
 
 /*
  *  Create string tables
  */
 
 %}
+%Start QUOTE
+
 /*
  * Define names for regular expressions here.
  */
@@ -75,21 +78,32 @@ ALPHABET_LOWER	[a-z]
 DIGIT		[0-9]
 UNDERSCORE	_
 NEW_LINE	"\n"
-ASSIGN		<-
+ASSIGN		"<-"
 ARITHMETIC	[\+\-\*\/]
-EQUAL		[=]
+EQUAL		=
+ESCAPED_STR	"\\"n
+STRING		\"({ALPHABET}|{DIGIT}|{SPACE}|_|{ESCAPED_STR})*\"
 
 %%
 
+@			{ return '@'; }
+\<			{ return '<'; }
+\>			{ return '>'; }
+"<="			{ return LE; }
+~			{ return '~'; }
 {EQUAL}			{ return '='; }
 {ARITHMETIC}		{ return yytext[0]; };
-","			{ return ','; }
+,			{ return ','; }
 {SPACE}			;
 {ASSIGN}		{ return ASSIGN; }
-'='			{ return '='; }
-":"			{ return ':';}
-";"			{ return ';';}
-\"			{ return '"'; }
+:			{ return ':';}
+;			{ return ';';}
+\"			{
+				if( quote == 0 )
+					quote = 1;
+				else
+					quote = 0;
+			}
 \.			{ return '.'; }
 \{			{ return '{'; }
 \}			{ return '}'; }
@@ -134,6 +148,18 @@ EQUAL		[=]
 				cool_yylval.symbol = idtable.add_string(yytext);
 				return (OBJECTID);
 			}
-{SPACE}			{	return ' ';      }
+{STRING}		{
+				char* str = (char*)malloc(sizeof(yytext)-2);
+				int len = strlen(yytext);
+				int i;
+				for(i=1;i<len;i++)
+				{
+					str[i-1] = yytext[i];
+				}
+				str[len-1] = '\0';
+				cool_yylval.symbol = stringtable.add_string(yytext);
+				return STR_CONST; 
+			}
+
 .			{ 	return ERROR;	}
 %%
