@@ -10,11 +10,10 @@
 
 
 %{
-#include <stdlib.h>
 #include <cool-parse.h>
 #include <stringtab.h>
 #include <utilities.h>
-int ind = 0;
+
 /* The compiler assumes these identifiers. */
 #define yylval cool_yylval
 #define yylex  cool_yylex
@@ -39,6 +38,7 @@ char *string_buf_ptr;
 
 extern int curr_lineno;
 extern int verbose_flag;
+
 extern YYSTYPE cool_yylval;
 
 /*
@@ -49,6 +49,11 @@ extern YYSTYPE cool_yylval;
 /*
  * Define names for regular expressions here.
  */
+DARROW          =>
+ARITHMETIC_OP	"+" | "-" | "*" | "/"
+COMP_OP		"<" | "<=" | "=" | ">" | ">="
+PUNCT		";" | ":" | "," | "." | "@"
+PARAN		"(" | ")" | "{" | "}"
 ELSE		(?i:else)
 CLASS		(?i:class)
 FALSE		f(?i:alse)
@@ -68,36 +73,23 @@ NEW		(?i:new)
 OF		(?i:of)
 NOT		(?i:not)
 TRUE		t(?i:rue)
-SPACE		[\f\r\t\v ]
+SPACE		[\f\r\t\v\n]
 ALPHABET	[a-zA-Z]
 ALPHABET_UPPER	[A-Z]
 ALPHABET_LOWER	[a-z]
 DIGIT		[0-9]
 UNDERSCORE	_
+NUMBER		DIGIT+
+TYPEID		(ALPHABET_UPPER)(ALPHABET|DIGIT|UNDERSCORE)*
+OBJID		(ALPHABET_LOWER)(ALPHABET|DIGIT|UNDERSCORE)*
 NEW_LINE	"\n"
-ASSIGN		<-
-ARITHMETIC	[\+\-\*\/]
-EQUAL		[=]
-
 %%
-
-{EQUAL}			{ return '='; }
-{ARITHMETIC}		{ return yytext[0]; };
-","			{ return ','; }
-{SPACE}			;
-{ASSIGN}		{ return ASSIGN; }
-'='			{ return '='; }
-":"			{ return ':';}
-";"			{ return ';';}
-\"			{ return '"'; }
-\.			{ return '.'; }
-\{			{ return '{'; }
-\}			{ return '}'; }
-\(			{ return '('; }
-\)			{ return ')'; }
+{TYPEID}		{ return TYPEID;}
 {NEW_LINE}		{
 				curr_lineno++;
+				return '\n'; 
 			}
+{DARROW}		{ return (DARROW); }
 {ELSE}			{ return (ELSE);   }
 {CLASS}			{ return (CLASS);  }
 {IF}			{ return (IF);}
@@ -115,25 +107,25 @@ EQUAL		[=]
 {NEW}			{ return (NEW);}
 {OF}			{ return (OF);}
 {NOT}			{ return (NOT);}
-({DIGIT})+		{
-				cool_yylval.symbol = inttable.add_string(yytext);
+{NUMBER}		{
 				return (INT_CONST);
 			}
 {TRUE}			{ 	
-				cool_yylval.boolean = 1;
 				return (BOOL_CONST);
 			}
-{FALSE}			{	cool_yylval.boolean = 0;
-				return (BOOL_CONST); 	}
-
-{ALPHABET_LOWER}({ALPHABET}|{DIGIT}|{UNDERSCORE})*	{
-				cool_yylval.symbol = idtable.add_string(yytext);
-				return (TYPEID);
+{FALSE}			{	
+				return (BOOL_CONST); 
 			}
-{ALPHABET_UPPER}({ALPHABET}|{DIGIT}|{UNDERSCORE})*	{
-				cool_yylval.symbol = idtable.add_string(yytext);
+{OBJID}			{	
 				return (OBJECTID);
 			}
-{SPACE}			{	return ' ';      }
-.			{ 	return ERROR;	}
+{TYPEID}		{
+				return (TYPEID);
+			}
+ /*
+  *  String constants (C syntax)
+  *  Escape sequence \c is accepted for all characters c. Except for 
+  *  \n \t \b \f, the result is c.
+  *
+  */
 %%
