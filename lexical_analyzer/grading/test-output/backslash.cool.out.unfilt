@@ -7,14 +7,5 @@
 #3 OBJECTID inside
 #3 OBJECTID the
 #3 OBJECTID string
-#3 STR_CONST "\n"
-#3 TYPEID I
-#3 ERROR "'"
-#3 OBJECTID m
-#3 OBJECTID about
-#3 OBJECTID to
-#3 OBJECTID excape
-#3 OBJECTID a
-#3 OBJECTID newline
-#3 ERROR "\\"
-#4 ERROR "Unterminated string"
+#3 ERROR "Unterminated string constant"
+#4 STR_CONST "I'm about to excape a newline \n"

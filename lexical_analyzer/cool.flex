@@ -96,6 +96,7 @@ STRING_ERR	\"([^\n"]|{ESCAPED_STR})+\"{1025,*}
 "--"			{ 	
 				char c;
 				while( (c = yyinput()) && ( c!=EOF ) && (c!='\n' ));
+				curr_lineno++;	
 			}
 \'.\'			{ return yytext[1]; }
 "(*"			{
@@ -190,44 +191,66 @@ STRING_ERR	\"([^\n"]|{ESCAPED_STR})+\"{1025,*}
 \:			{ return ':';}
 ;			{ return ';';}
 \"			{
-				
 				char c;
 				char prev = 0;
 				int count = 0;
-				while( (c=yyinput()) && (c!='"') && (c!=EOF))
+				int chars = 0;
+				while( (c=yyinput()) && (c!='\"') && (c!=EOF))
 				{
-					if( c == '\0' )
+					if( c != '\\' )
+						chars++;
+					if( chars >= (MAX_STR_CONST) )
+					{
+						cool_yylval.error_msg = "String constant too long";
+						goto str_err;
+					}
+					// NULL chars are not allowed
+					if( c == '\0')
 					{
 						cool_yylval.error_msg = "String contains null character";
 						goto str_err;
 					}
 					if( prev == '\\' )
 					{
-						if( c == 'n' )
+						if( c == '\n' )
 						{
+							/* Rewrite the '\' and \n' chars as '\n' char */
 							string_buf[count-1] = '\n';
-							continue;
 						}
 						else if( c == '0' )
 						{
+							/* Rewrite the '\' and '0' as '0' */
 							string_buf[count-1] = '0';
-							continue;
 						}
-					}
-					if( prev != '\\' && c == '\n')
-					{
-						cool_yylval.error_msg = "Unterminated string constant";
-						/* Goto the next line */
-						while((c==yyinput()) && (c!='\n'))
+						else if( c == 'n' )
+						{	
+							string_buf[count-1] = '\n';
+						}
+						else
 						{
-							count++;
-							if( count >= 1024 )
-								cool_yylval.error_msg = "String constant too long";
-								goto str_err;
+							string_buf[count++] = c;
+						}
+						prev = c;
+						continue;
+					}
+					else if( prev != '\\')
+					{
+						if( c == '\n' ) {
+							cool_yylval.error_msg = "Unterminated string constant";
+							return ERROR;
+						}
+						else
+						{
+							string_buf[count++] = c;
+							prev = c;
 						}
 					}
-					string_buf[count++] = c;
-					prev = c;
+				}
+				if( c == '\0' )
+				{
+					cool_yylval.error_msg = "String contains null character";
+					goto str_err;
+
 				}
 				if( c == EOF )
 				{
@@ -240,7 +263,6 @@ STRING_ERR	\"([^\n"]|{ESCAPED_STR})+\"{1025,*}
 			str_err:
 				while( (c = yyinput()) && (c!='\n') && (c!='"'));
 				return ERROR;
-
 			}
 "["			{	
 				cool_yylval.error_msg = strdup("[");

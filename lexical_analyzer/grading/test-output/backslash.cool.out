@@ -6,14 +6,5 @@ OBJECTID still
 OBJECTID inside
 OBJECTID the
 OBJECTID string
-STR_CONST "\n"
-TYPEID I
-ERROR "'"
-OBJECTID m
-OBJECTID about
-OBJECTID to
-OBJECTID excape
-OBJECTID a
-OBJECTID newline
 LONGERROR
-LONGERROR
+STR_CONST "I'm about to excape a newline \n"

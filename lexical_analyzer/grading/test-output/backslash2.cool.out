@@ -1,34 +1,6 @@
-STR_CONST "I'm not going to escape this newline\n\n"
-TYPEID This
-OBJECTID is
-OBJECTID also
-NOT
-OBJECTID escaped
 LONGERROR
 LONGERROR
-STR_CONST "\n"
-TYPEID This
-OBJECTID is
-','
-OBJECTID though
-LONGERROR
-LONGERROR
-LONGERROR
-STR_CONST "\n"
-LONGERROR
-LONGERROR
-STR_CONST "\n"
-TYPEID It
-ERROR "'"
-OBJECTID s
-OBJECTID fine
-OBJECTID to
-OBJECTID have
-OBJECTID this
-':'
-LONGERROR
-OBJECTID n
-IN
-OBJECTID a
-OBJECTID string
-LONGERROR
+STR_CONST "This is also not escaped \\\n"
+STR_CONST "This is, though \\\\\n"
+STR_CONST "\\\\"
+STR_CONST "It's fine to have this: \n in a string"
