@@ -1,0 +1,11 @@
+#name "./null_in_string_unescaped_newline.cl.cool"
+#2 TYPEID null
+#2 TYPEID character
+#2 TYPEID is
+#2 TYPEID here
+#2 '-'
+#2 <Invalid Token>
+#2 ERROR "\000"
+#2 ASSIGN
+#3 TYPEID a
+#3 '+'

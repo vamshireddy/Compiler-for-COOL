@@ -1,0 +1,680 @@
+2c2
+< TYPEID List
+---
+> OBJECTID List
+4c4
+< TYPEID IO
+---
+> OBJECTID IO
+6c6
+< OBJECTID isNil
+---
+> TYPEID isNil
+10c10
+< TYPEID Bool
+---
+> OBJECTID Bool
+13c13
+< OBJECTID abort
+---
+> TYPEID abort
+22c22
+< OBJECTID cons
+---
+> TYPEID cons
+24c24
+< OBJECTID hd
+---
+> TYPEID hd
+26c26
+< TYPEID Int
+---
+> OBJECTID Int
+29c29
+< TYPEID Cons
+---
+> OBJECTID Cons
+33c33
+< OBJECTID new_cell
+---
+> TYPEID new_cell
+35c35
+< TYPEID Cons
+---
+> OBJECTID Cons
+38c38
+< TYPEID Cons
+---
+> OBJECTID Cons
+40c40
+< OBJECTID new_cell
+---
+> TYPEID new_cell
+42c42
+< OBJECTID init
+---
+> TYPEID init
+44c44
+< OBJECTID hd
+---
+> TYPEID hd
+46c46
+< OBJECTID self
+---
+> TYPEID self
+51c51
+< OBJECTID car
+---
+> TYPEID car
+55c55
+< TYPEID Int
+---
+> OBJECTID Int
+58c58
+< OBJECTID abort
+---
+> TYPEID abort
+63c63
+< TYPEID Int
+---
+> OBJECTID Int
+68c68
+< OBJECTID cdr
+---
+> TYPEID cdr
+72c72
+< TYPEID List
+---
+> OBJECTID List
+75c75
+< OBJECTID abort
+---
+> TYPEID abort
+80c80
+< TYPEID List
+---
+> OBJECTID List
+85c85
+< OBJECTID rev
+---
+> TYPEID rev
+89c89
+< TYPEID List
+---
+> OBJECTID List
+91c91
+< OBJECTID cdr
+---
+> TYPEID cdr
+96c96
+< OBJECTID sort
+---
+> TYPEID sort
+100c100
+< TYPEID List
+---
+> OBJECTID List
+102c102
+< OBJECTID cdr
+---
+> TYPEID cdr
+107c107
+< OBJECTID insert
+---
+> TYPEID insert
+109c109
+< OBJECTID i
+---
+> TYPEID i
+111c111
+< TYPEID Int
+---
+> OBJECTID Int
+114c114
+< TYPEID List
+---
+> OBJECTID List
+116c116
+< OBJECTID cdr
+---
+> TYPEID cdr
+121c121
+< OBJECTID rcons
+---
+> TYPEID rcons
+123c123
+< OBJECTID i
+---
+> TYPEID i
+125c125
+< TYPEID Int
+---
+> OBJECTID Int
+128c128
+< TYPEID List
+---
+> OBJECTID List
+130c130
+< OBJECTID cdr
+---
+> TYPEID cdr
+135c135
+< OBJECTID print_list
+---
+> TYPEID print_list
+139c139
+< TYPEID Object
+---
+> OBJECTID Object
+141c141
+< OBJECTID abort
+---
+> TYPEID abort
+149c149
+< TYPEID Cons
+---
+> OBJECTID Cons
+151c151
+< TYPEID List
+---
+> OBJECTID List
+153c153
+< OBJECTID xcar
+---
+> TYPEID xcar
+155c155
+< TYPEID Int
+---
+> OBJECTID Int
+157c157
+< OBJECTID xcdr
+---
+> TYPEID xcdr
+159c159
+< TYPEID List
+---
+> OBJECTID List
+161c161
+< OBJECTID isNil
+---
+> TYPEID isNil
+165c165
+< TYPEID Bool
+---
+> OBJECTID Bool
+170c170
+< OBJECTID init
+---
+> TYPEID init
+172c172
+< OBJECTID hd
+---
+> TYPEID hd
+174c174
+< TYPEID Int
+---
+> OBJECTID Int
+176c176
+< OBJECTID tl
+---
+> TYPEID tl
+178c178
+< TYPEID List
+---
+> OBJECTID List
+181c181
+< TYPEID Cons
+---
+> OBJECTID Cons
+184c184
+< OBJECTID xcar
+---
+> TYPEID xcar
+186c186
+< OBJECTID hd
+---
+> TYPEID hd
+188c188
+< OBJECTID xcdr
+---
+> TYPEID xcdr
+190c190
+< OBJECTID tl
+---
+> TYPEID tl
+192c192
+< OBJECTID self
+---
+> TYPEID self
+197c197
+< OBJECTID car
+---
+> TYPEID car
+201c201
+< TYPEID Int
+---
+> OBJECTID Int
+203c203
+< OBJECTID xcar
+---
+> TYPEID xcar
+206c206
+< OBJECTID cdr
+---
+> TYPEID cdr
+210c210
+< TYPEID List
+---
+> OBJECTID List
+212c212
+< OBJECTID xcdr
+---
+> TYPEID xcdr
+215c215
+< OBJECTID rev
+---
+> TYPEID rev
+219c219
+< TYPEID List
+---
+> OBJECTID List
+222c222
+< OBJECTID xcdr
+---
+> TYPEID xcdr
+224c224
+< OBJECTID rev
+---
+> TYPEID rev
+229c229
+< OBJECTID rcons
+---
+> TYPEID rcons
+231c231
+< OBJECTID xcar
+---
+> TYPEID xcar
+235c235
+< OBJECTID sort
+---
+> TYPEID sort
+239c239
+< TYPEID List
+---
+> OBJECTID List
+242c242
+< OBJECTID xcdr
+---
+> TYPEID xcdr
+244c244
+< OBJECTID sort
+---
+> TYPEID sort
+249c249
+< OBJECTID insert
+---
+> TYPEID insert
+251c251
+< OBJECTID xcar
+---
+> TYPEID xcar
+255c255
+< OBJECTID insert
+---
+> TYPEID insert
+257c257
+< OBJECTID i
+---
+> TYPEID i
+259c259
+< TYPEID Int
+---
+> OBJECTID Int
+262c262
+< TYPEID List
+---
+> OBJECTID List
+265c265
+< OBJECTID i
+---
+> TYPEID i
+267c267
+< OBJECTID xcar
+---
+> TYPEID xcar
+271c271
+< TYPEID Cons
+---
+> OBJECTID Cons
+274c274
+< OBJECTID init
+---
+> TYPEID init
+276c276
+< OBJECTID i
+---
+> TYPEID i
+278c278
+< OBJECTID self
+---
+> TYPEID self
+283c283
+< TYPEID Cons
+---
+> OBJECTID Cons
+286c286
+< OBJECTID init
+---
+> TYPEID init
+288c288
+< OBJECTID xcar
+---
+> TYPEID xcar
+290c290
+< OBJECTID xcdr
+---
+> TYPEID xcdr
+292c292
+< OBJECTID insert
+---
+> TYPEID insert
+294c294
+< OBJECTID i
+---
+> TYPEID i
+300c300
+< OBJECTID rcons
+---
+> TYPEID rcons
+302c302
+< OBJECTID i
+---
+> TYPEID i
+304c304
+< TYPEID Int
+---
+> OBJECTID Int
+307c307
+< TYPEID List
+---
+> OBJECTID List
+311c311
+< TYPEID Cons
+---
+> OBJECTID Cons
+314c314
+< OBJECTID init
+---
+> TYPEID init
+316c316
+< OBJECTID xcar
+---
+> TYPEID xcar
+318c318
+< OBJECTID xcdr
+---
+> TYPEID xcdr
+320c320
+< OBJECTID rcons
+---
+> TYPEID rcons
+322c322
+< OBJECTID i
+---
+> TYPEID i
+327c327
+< OBJECTID print_list
+---
+> TYPEID print_list
+331c331
+< TYPEID Object
+---
+> OBJECTID Object
+334c334
+< OBJECTID out_int
+---
+> TYPEID out_int
+336c336
+< OBJECTID xcar
+---
+> TYPEID xcar
+339c339
+< OBJECTID out_string
+---
+> TYPEID out_string
+341c341
+< STR_CONST "\n"
+---
+> STR_CONST "\\n"
+344c344
+< OBJECTID xcdr
+---
+> TYPEID xcdr
+346c346
+< OBJECTID print_list
+---
+> TYPEID print_list
+356c356
+< TYPEID Nil
+---
+> OBJECTID Nil
+358c358
+< TYPEID List
+---
+> OBJECTID List
+360c360
+< OBJECTID isNil
+---
+> TYPEID isNil
+364c364
+< TYPEID Bool
+---
+> OBJECTID Bool
+369c369
+< OBJECTID rev
+---
+> TYPEID rev
+373c373
+< TYPEID List
+---
+> OBJECTID List
+375c375
+< OBJECTID self
+---
+> TYPEID self
+378c378
+< OBJECTID sort
+---
+> TYPEID sort
+382c382
+< TYPEID List
+---
+> OBJECTID List
+384c384
+< OBJECTID self
+---
+> TYPEID self
+387c387
+< OBJECTID insert
+---
+> TYPEID insert
+389c389
+< OBJECTID i
+---
+> TYPEID i
+391c391
+< TYPEID Int
+---
+> OBJECTID Int
+394c394
+< TYPEID List
+---
+> OBJECTID List
+396c396
+< OBJECTID rcons
+---
+> TYPEID rcons
+398c398
+< OBJECTID i
+---
+> TYPEID i
+402c402
+< OBJECTID rcons
+---
+> TYPEID rcons
+404c404
+< OBJECTID i
+---
+> TYPEID i
+406c406
+< TYPEID Int
+---
+> OBJECTID Int
+409c409
+< TYPEID List
+---
+> OBJECTID List
+413c413
+< TYPEID Cons
+---
+> OBJECTID Cons
+416c416
+< OBJECTID init
+---
+> TYPEID init
+418c418
+< OBJECTID i
+---
+> TYPEID i
+420c420
+< OBJECTID self
+---
+> TYPEID self
+424c424
+< OBJECTID print_list
+---
+> TYPEID print_list
+428c428
+< TYPEID Object
+---
+> OBJECTID Object
+436c436
+< TYPEID Main
+---
+> OBJECTID Main
+438c438
+< TYPEID IO
+---
+> OBJECTID IO
+440c440
+< OBJECTID l
+---
+> TYPEID l
+442c442
+< TYPEID List
+---
+> OBJECTID List
+444c444
+< OBJECTID iota
+---
+> TYPEID iota
+446c446
+< OBJECTID i
+---
+> TYPEID i
+448c448
+< TYPEID Int
+---
+> OBJECTID Int
+451c451
+< TYPEID List
+---
+> OBJECTID List
+454c454
+< OBJECTID l
+---
+> TYPEID l
+457c457
+< TYPEID Nil
+---
+> OBJECTID Nil
+461c461
+< OBJECTID j
+---
+> TYPEID j
+463c463
+< TYPEID Int
+---
+> OBJECTID Int
+468c468
+< OBJECTID j
+---
+> TYPEID j
+470c470
+< OBJECTID i
+---
+> TYPEID i
+473c473
+< OBJECTID l
+---
+> TYPEID l
+477c477
+< TYPEID Cons
+---
+> OBJECTID Cons
+480c480
+< OBJECTID init
+---
+> TYPEID init
+482c482
+< OBJECTID j
+---
+> TYPEID j
+484c484
+< OBJECTID l
+---
+> TYPEID l
+487c487
+< OBJECTID j
+---
+> TYPEID j
+489c489
+< OBJECTID j
+---
+> TYPEID j
+497c497
+< OBJECTID l
+---
+> TYPEID l
+502c502
+< OBJECTID main
+---
+> TYPEID main
+506c506
+< TYPEID Object
+---
+> OBJECTID Object
+509c509
+< OBJECTID out_string
+---
+> TYPEID out_string
+514c514
+< OBJECTID iota
+---
+> TYPEID iota
+516c516
+< OBJECTID in_int
+---
+> TYPEID in_int
+521c521
+< OBJECTID rev
+---
+> TYPEID rev
+525c525
+< OBJECTID sort
+---
+> TYPEID sort
+529c529
+< OBJECTID print_list
+---
+> TYPEID print_list

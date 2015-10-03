@@ -1,0 +1,12 @@
+1,5c1,5
+< TYPEID This
+< OBJECTID comment
+< OBJECTID was
+< OBJECTID never
+< OBJECTID begun
+---
+> OBJECTID This
+> TYPEID comment
+> TYPEID was
+> TYPEID never
+> TYPEID begun

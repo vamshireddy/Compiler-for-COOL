@@ -1,0 +1,6 @@
+1,2c1,2
+< LONGERROR
+< OBJECTID a
+---
+> STR_CONST "null character is here ->"
+> TYPEID a

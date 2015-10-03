@@ -1,0 +1,12 @@
+#name "./multilinecomment.cool"
+#3 NOT
+#3 IN
+#3 TYPEID a
+#3 TYPEID comment
+#10 '('
+#10 '*'
+#10 NOT
+#10 TYPEID a
+#10 TYPEID comment
+#10 '*'
+#10 ')'

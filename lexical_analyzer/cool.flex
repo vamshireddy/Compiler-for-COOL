@@ -14,7 +14,6 @@
 #include <cool-parse.h>
 #include <stringtab.h>
 #include <utilities.h>
-int ind = 1;
 int comment_start = 0;
 /* The compiler assumes these identifiers. */
 #define yylval cool_yylval
@@ -37,6 +36,8 @@ extern FILE *fin; /* we read from this file */
 
 char string_buf[MAX_STR_CONST]; /* to assemble string constants */
 char *string_buf_ptr;
+
+char unput_buffer[MAX_STR_CONST];
 
 extern int curr_lineno;
 extern int verbose_flag;
@@ -84,25 +85,34 @@ NEW_LINE	"\n"
 ASSIGN		"<-"
 ARITHMETIC	[\+\-\*\/]
 EQUAL		=
-ESCAPED_STR	"\\"n
-STRING		\"({ALPHABET}|{DIGIT}|{SPACE}|_|{ESCAPED_STR})*\"
-STRING_ERR	\"({ALPHABET}|{DIGIT}|{SPACE}|_|"\n")*\"
+ESCAPED_STR	\\\n
+STRING		\"([^\n"]|{ESCAPED_STR})+\"
 %%
 
+"--"			{ 	
+				char c;
+				while( (c = yyinput()) && ( c!=EOF ) && (c!='\n' ));
+			}
 \'.\'			{ return yytext[1]; }
 "(*"			{
+				comment_start++;
 				char c;
 			comment_strt: 
-				while((c = yyinput()) && (c!=EOF) && (c!='*'))
+				while((c = yyinput()) && (c!=EOF) && (c!='*') && (c!='('))
 				{
 					if( c == '\n' )
 						curr_lineno++;
 				}
 				if( c == '*' )
-				{
-					while((c = yyinput()) == '*' );
+				{	
+					while((c = yyinput()) && ( c == '*') );
 					if( c == ')' )
-					{
+					{	
+						comment_start--;
+						if( comment_start > 0 )
+						{
+							goto comment_strt;
+						}
 					}
 					else if( c == EOF )
 					{
@@ -111,6 +121,32 @@ STRING_ERR	\"({ALPHABET}|{DIGIT}|{SPACE}|_|"\n")*\"
 					else if( c == '\n' )
 					{
 						curr_lineno++;
+						unput(c);
+						goto comment_strt;
+					}
+					else
+					{
+						unput(c);
+						goto comment_strt;
+					}
+				}
+				else if( c == '(' )
+				{
+					c = yyinput();
+					if(c == '*')
+					{
+						comment_start++;
+						goto comment_strt;
+					}
+					else if( c == EOF )
+					{
+						goto comment_err_eof;
+					}
+					else if( c == '\n' )
+					{
+						curr_lineno++;
+						unput(c);
+						goto comment_strt;
 					}
 					else
 					{
@@ -144,7 +180,7 @@ STRING_ERR	\"({ALPHABET}|{DIGIT}|{SPACE}|_|"\n")*\"
 ,			{ return ','; }
 {SPACE}			;
 {ASSIGN}		{ return ASSIGN; }
-:			{ return ':';}
+\:			{ return ':';}
 ;			{ return ';';}
 \"			{
 				if( quote == 0 )
@@ -201,15 +237,15 @@ STRING_ERR	\"({ALPHABET}|{DIGIT}|{SPACE}|_|"\n")*\"
 {STRING}		{
 				char* str = (char*)malloc(yyleng-2);
 				int i;
-				for(i=1;i<yyleng-1;i++)
+				int j;
+				for(i=1,j=0;i<yyleng-1;i++)
 				{
-					str[i-1] = yytext[i];
+					str[j++] = yytext[i];
 				}
-				str[i] = '\0';
+				str[j] = '\0';
 				cool_yylval.symbol = stringtable.add_string(str);
 				return STR_CONST; 
 			}
-
 .			{ 	cool_yylval.error_msg = strdup(yytext);
 				return ERROR;	}
 %%

@@ -1,0 +1,7 @@
+1,3c1,2
+< LONGERROR
+< OBJECTID d
+< LONGERROR
+---
+> TYPEID c
+> TYPEID d

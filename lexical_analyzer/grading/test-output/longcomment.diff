@@ -1,0 +1,32 @@
+1,13c1,13
+< TYPEID Comment
+< OBJECTID test
+< TYPEID Comment
+< OBJECTID test
+< TYPEID Foo
+< OBJECTID bar
+< TYPEID Moo
+< OBJECTID bow
+< TYPEID JoJo
+< TYPEID JojOj
+< OBJECTID joJoj323
+< OBJECTID dfdj
+< OBJECTID fadsjfkldsafjklsd
+---
+> OBJECTID Comment
+> TYPEID test
+> OBJECTID Comment
+> TYPEID test
+> OBJECTID Foo
+> TYPEID bar
+> OBJECTID Moo
+> TYPEID bow
+> OBJECTID JoJo
+> OBJECTID JojOj
+> TYPEID joJoj323
+> TYPEID dfdj
+> TYPEID fadsjfkldsafjklsd
+15c15
+< OBJECTID dfdsajfk312
+---
+> TYPEID dfdsajfk312

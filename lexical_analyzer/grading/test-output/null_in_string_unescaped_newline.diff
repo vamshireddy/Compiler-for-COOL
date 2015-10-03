@@ -1,0 +1,12 @@
+0a1,6
+> TYPEID null
+> TYPEID character
+> TYPEID is
+> TYPEID here
+> '-'
+> <Invalid Token>
+2c8,9
+< OBJECTID a
+---
+> ASSIGN
+> TYPEID a

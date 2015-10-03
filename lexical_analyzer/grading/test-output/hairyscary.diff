@@ -1,0 +1,457 @@
+2c2
+< TYPEID Foo
+---
+> OBJECTID Foo
+4c4
+< TYPEID Bazz
+---
+> OBJECTID Bazz
+6c6
+< OBJECTID a
+---
+> TYPEID a
+8c8
+< TYPEID Razz
+---
+> OBJECTID Razz
+11c11
+< OBJECTID self
+---
+> TYPEID self
+13c13
+< OBJECTID n
+---
+> TYPEID n
+15,16c15,17
+< TYPEID Razz
+< DARROW
+---
+> OBJECTID Razz
+> '='
+> <Invalid Token>
+19c20
+< TYPEID Bar
+---
+> OBJECTID Bar
+22c23
+< OBJECTID n
+---
+> TYPEID n
+24,25c25,27
+< TYPEID Foo
+< DARROW
+---
+> OBJECTID Foo
+> '='
+> <Invalid Token>
+28c30
+< TYPEID Razz
+---
+> OBJECTID Razz
+31c33
+< OBJECTID n
+---
+> TYPEID n
+33,35c35,38
+< TYPEID Bar
+< DARROW
+< OBJECTID n
+---
+> OBJECTID Bar
+> '='
+> <Invalid Token>
+> TYPEID n
+39c42
+< OBJECTID b
+---
+> TYPEID b
+41c44
+< TYPEID Int
+---
+> OBJECTID Int
+43c46
+< OBJECTID a
+---
+> TYPEID a
+45c48
+< OBJECTID doh
+---
+> TYPEID doh
+49c52
+< OBJECTID g
+---
+> TYPEID g
+51c54
+< OBJECTID doh
+---
+> TYPEID doh
+55c58
+< OBJECTID doh
+---
+> TYPEID doh
+59c62
+< OBJECTID printh
+---
+> TYPEID printh
+63c66
+< OBJECTID doh
+---
+> TYPEID doh
+67c70
+< TYPEID Int
+---
+> OBJECTID Int
+71c74
+< OBJECTID i
+---
+> TYPEID i
+73c76
+< TYPEID Int
+---
+> OBJECTID Int
+75c78
+< OBJECTID h
+---
+> TYPEID h
+78c81
+< OBJECTID h
+---
+> TYPEID h
+80c83
+< OBJECTID h
+---
+> TYPEID h
+84c87
+< OBJECTID i
+---
+> TYPEID i
+93c96
+< TYPEID Bar
+---
+> OBJECTID Bar
+95c98
+< TYPEID Razz
+---
+> OBJECTID Razz
+97c100
+< OBJECTID c
+---
+> TYPEID c
+99c102
+< TYPEID Int
+---
+> OBJECTID Int
+101c104
+< OBJECTID doh
+---
+> TYPEID doh
+105c108
+< OBJECTID d
+---
+> TYPEID d
+107c110
+< TYPEID Object
+---
+> OBJECTID Object
+109c112
+< OBJECTID printh
+---
+> TYPEID printh
+116c119
+< TYPEID Razz
+---
+> OBJECTID Razz
+118c121
+< TYPEID Foo
+---
+> OBJECTID Foo
+120c123
+< OBJECTID e
+---
+> TYPEID e
+122c125
+< TYPEID Bar
+---
+> OBJECTID Bar
+125c128
+< OBJECTID self
+---
+> TYPEID self
+127c130
+< OBJECTID n
+---
+> TYPEID n
+129,130c132,134
+< TYPEID Razz
+< DARROW
+---
+> OBJECTID Razz
+> '='
+> <Invalid Token>
+133c137
+< TYPEID Bar
+---
+> OBJECTID Bar
+136c140
+< OBJECTID n
+---
+> TYPEID n
+138,140c142,145
+< TYPEID Bar
+< DARROW
+< OBJECTID n
+---
+> OBJECTID Bar
+> '='
+> <Invalid Token>
+> TYPEID n
+144c149
+< OBJECTID f
+---
+> TYPEID f
+146c151
+< TYPEID Int
+---
+> OBJECTID Int
+148c153
+< OBJECTID a
+---
+> TYPEID a
+150c155
+< TYPEID Bazz
+---
+> OBJECTID Bazz
+152c157
+< OBJECTID doh
+---
+> TYPEID doh
+156c161
+< OBJECTID g
+---
+> TYPEID g
+158c163
+< OBJECTID doh
+---
+> TYPEID doh
+162c167
+< OBJECTID e
+---
+> TYPEID e
+164c169
+< OBJECTID doh
+---
+> TYPEID doh
+168c173
+< OBJECTID doh
+---
+> TYPEID doh
+172c177
+< OBJECTID printh
+---
+> TYPEID printh
+179c184
+< TYPEID Bazz
+---
+> OBJECTID Bazz
+181c186
+< TYPEID IO
+---
+> OBJECTID IO
+183c188
+< OBJECTID h
+---
+> TYPEID h
+185c190
+< TYPEID Int
+---
+> OBJECTID Int
+189c194
+< OBJECTID g
+---
+> TYPEID g
+191c196
+< TYPEID Foo
+---
+> OBJECTID Foo
+194c199
+< OBJECTID self
+---
+> TYPEID self
+196c201
+< OBJECTID n
+---
+> TYPEID n
+198,199c203,205
+< TYPEID Bazz
+< DARROW
+---
+> OBJECTID Bazz
+> '='
+> <Invalid Token>
+202c208
+< TYPEID Foo
+---
+> OBJECTID Foo
+205c211
+< OBJECTID n
+---
+> TYPEID n
+207,208c213,215
+< TYPEID Razz
+< DARROW
+---
+> OBJECTID Razz
+> '='
+> <Invalid Token>
+211c218
+< TYPEID Bar
+---
+> OBJECTID Bar
+214c221
+< OBJECTID n
+---
+> TYPEID n
+216,217c223,225
+< TYPEID Foo
+< DARROW
+---
+> OBJECTID Foo
+> '='
+> <Invalid Token>
+220c228
+< TYPEID Razz
+---
+> OBJECTID Razz
+223c231
+< OBJECTID n
+---
+> TYPEID n
+225,227c233,236
+< TYPEID Bar
+< DARROW
+< OBJECTID n
+---
+> OBJECTID Bar
+> '='
+> <Invalid Token>
+> TYPEID n
+231c240
+< OBJECTID i
+---
+> TYPEID i
+233c242
+< TYPEID Object
+---
+> OBJECTID Object
+235c244
+< OBJECTID printh
+---
+> TYPEID printh
+239c248
+< OBJECTID printh
+---
+> TYPEID printh
+243c252
+< TYPEID Int
+---
+> OBJECTID Int
+246c255
+< OBJECTID out_int
+---
+> TYPEID out_int
+248c257
+< OBJECTID h
+---
+> TYPEID h
+256c265
+< OBJECTID doh
+---
+> TYPEID doh
+260c269
+< TYPEID Int
+---
+> OBJECTID Int
+264c273
+< OBJECTID i
+---
+> TYPEID i
+266c275
+< TYPEID Int
+---
+> OBJECTID Int
+268c277
+< OBJECTID h
+---
+> TYPEID h
+271c280
+< OBJECTID h
+---
+> TYPEID h
+273c282
+< OBJECTID h
+---
+> TYPEID h
+277c286
+< OBJECTID i
+---
+> TYPEID i
+286c295
+< TYPEID Main
+---
+> OBJECTID Main
+288c297
+< OBJECTID a
+---
+> TYPEID a
+290c299
+< TYPEID Bazz
+---
+> OBJECTID Bazz
+293c302
+< TYPEID Bazz
+---
+> OBJECTID Bazz
+295c304
+< OBJECTID b
+---
+> TYPEID b
+297c306
+< TYPEID Foo
+---
+> OBJECTID Foo
+300c309
+< TYPEID Foo
+---
+> OBJECTID Foo
+302c311
+< OBJECTID c
+---
+> TYPEID c
+304c313
+< TYPEID Razz
+---
+> OBJECTID Razz
+307c316
+< TYPEID Razz
+---
+> OBJECTID Razz
+309c318
+< OBJECTID d
+---
+> TYPEID d
+311c320
+< TYPEID Bar
+---
+> OBJECTID Bar
+314c323
+< TYPEID Bar
+---
+> OBJECTID Bar
+316c325
+< OBJECTID main
+---
+> TYPEID main
+320c329
+< TYPEID String
+---
+> OBJECTID String

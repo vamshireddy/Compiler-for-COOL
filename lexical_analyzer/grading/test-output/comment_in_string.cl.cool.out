@@ -1,0 +1,4 @@
+STR_CONST "string (* 123 *) string"
+TYPEID string
+LONGERROR
+TYPEID string

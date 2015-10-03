@@ -1,0 +1,3 @@
+#name "./s33.test.cool"
+#3 TYPEID before_the_comment
+#8 ERROR "EOF in the comment"

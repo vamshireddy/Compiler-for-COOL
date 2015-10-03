@@ -1,0 +1,14 @@
+ERROR "!"
+ERROR "#"
+ERROR "$"
+ERROR "%"
+ERROR "^"
+ERROR "&"
+ERROR "_"
+<Invalid Token>
+ERROR "?"
+ERROR "`"
+<Invalid Token>
+<Invalid Token>
+LONGERROR
+ERROR "|"

@@ -1,0 +1,143 @@
+CLASS
+OBJECTID A
+'{'
+TYPEID io
+':'
+OBJECTID IO
+ASSIGN
+NEW
+OBJECTID IO
+';'
+TYPEID out_a
+'('
+')'
+':'
+OBJECTID Object
+'{'
+TYPEID io
+'.'
+TYPEID out_string
+'('
+STR_CONST "A: Hello world\\n"
+')'
+'}'
+';'
+'}'
+';'
+CLASS
+OBJECTID B
+INHERITS
+OBJECTID A
+'{'
+TYPEID out_b
+'('
+')'
+':'
+OBJECTID Object
+'{'
+TYPEID io
+'.'
+TYPEID out_string
+'('
+STR_CONST "B: Hello world\\n"
+')'
+'}'
+';'
+'}'
+';'
+CLASS
+OBJECTID C
+INHERITS
+OBJECTID IO
+'{'
+TYPEID out_c
+'('
+')'
+':'
+OBJECTID Object
+'{'
+TYPEID out_string
+'('
+STR_CONST "C: Hello world\\n"
+')'
+'}'
+';'
+'}'
+';'
+CLASS
+OBJECTID D
+INHERITS
+OBJECTID C
+'{'
+TYPEID out_d
+'('
+')'
+':'
+OBJECTID Object
+'{'
+TYPEID out_string
+'('
+STR_CONST "D: Hello world\\n"
+')'
+'}'
+';'
+'}'
+';'
+CLASS
+OBJECTID Main
+INHERITS
+OBJECTID IO
+'{'
+TYPEID main
+'('
+')'
+':'
+OBJECTID Object
+'{'
+'{'
+'('
+NEW
+OBJECTID A
+')'
+'.'
+TYPEID out_a
+'('
+')'
+';'
+'('
+NEW
+OBJECTID B
+')'
+'.'
+TYPEID out_b
+'('
+')'
+';'
+'('
+NEW
+OBJECTID C
+')'
+'.'
+TYPEID out_c
+'('
+')'
+';'
+'('
+NEW
+OBJECTID D
+')'
+'.'
+TYPEID out_d
+'('
+')'
+';'
+TYPEID out_string
+'('
+STR_CONST "Done.\\n"
+')'
+';'
+'}'
+'}'
+';'
+'}'
+';'

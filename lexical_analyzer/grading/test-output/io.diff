@@ -1,0 +1,166 @@
+2c2
+< TYPEID A
+---
+> OBJECTID A
+4,5d3
+< OBJECTID io
+< ':'
+6a5,6
+> ':'
+> OBJECTID IO
+9c9
+< TYPEID IO
+---
+> OBJECTID IO
+11c11
+< OBJECTID out_a
+---
+> TYPEID out_a
+15c15
+< TYPEID Object
+---
+> OBJECTID Object
+17c17
+< OBJECTID io
+---
+> TYPEID io
+19c19
+< OBJECTID out_string
+---
+> TYPEID out_string
+21c21
+< STR_CONST "A: Hello world\n"
+---
+> STR_CONST "A: Hello world\\n"
+28c28
+< TYPEID B
+---
+> OBJECTID B
+30c30
+< TYPEID A
+---
+> OBJECTID A
+32c32
+< OBJECTID out_b
+---
+> TYPEID out_b
+36c36
+< TYPEID Object
+---
+> OBJECTID Object
+38c38
+< OBJECTID io
+---
+> TYPEID io
+40c40
+< OBJECTID out_string
+---
+> TYPEID out_string
+42c42
+< STR_CONST "B: Hello world\n"
+---
+> STR_CONST "B: Hello world\\n"
+49c49
+< TYPEID C
+---
+> OBJECTID C
+51c51
+< TYPEID IO
+---
+> OBJECTID IO
+53c53
+< OBJECTID out_c
+---
+> TYPEID out_c
+57c57
+< TYPEID Object
+---
+> OBJECTID Object
+59c59
+< OBJECTID out_string
+---
+> TYPEID out_string
+61c61
+< STR_CONST "C: Hello world\n"
+---
+> STR_CONST "C: Hello world\\n"
+68c68
+< TYPEID D
+---
+> OBJECTID D
+70c70
+< TYPEID C
+---
+> OBJECTID C
+72c72
+< OBJECTID out_d
+---
+> TYPEID out_d
+76c76
+< TYPEID Object
+---
+> OBJECTID Object
+78c78
+< OBJECTID out_string
+---
+> TYPEID out_string
+80c80
+< STR_CONST "D: Hello world\n"
+---
+> STR_CONST "D: Hello world\\n"
+87c87
+< TYPEID Main
+---
+> OBJECTID Main
+89c89
+< TYPEID IO
+---
+> OBJECTID IO
+91c91
+< OBJECTID main
+---
+> TYPEID main
+95c95
+< TYPEID Object
+---
+> OBJECTID Object
+100c100
+< TYPEID A
+---
+> OBJECTID A
+103c103
+< OBJECTID out_a
+---
+> TYPEID out_a
+109c109
+< TYPEID B
+---
+> OBJECTID B
+112c112
+< OBJECTID out_b
+---
+> TYPEID out_b
+118c118
+< TYPEID C
+---
+> OBJECTID C
+121c121
+< OBJECTID out_c
+---
+> TYPEID out_c
+127c127
+< TYPEID D
+---
+> OBJECTID D
+130c130
+< OBJECTID out_d
+---
+> TYPEID out_d
+134c134
+< OBJECTID out_string
+---
+> TYPEID out_string
+136c136
+< STR_CONST "Done.\n"
+---
+> STR_CONST "Done.\\n"

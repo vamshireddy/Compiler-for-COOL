@@ -1,0 +1,11 @@
+TYPEID what
+TYPEID the
+TYPEID programmer
+TYPEID thought
+TYPEID it
+TYPEID was
+LONGERROR
+'.'
+IF
+INT_CONST 5
+THEN

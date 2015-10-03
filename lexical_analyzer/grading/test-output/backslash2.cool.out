@@ -1,0 +1,25 @@
+OBJECTID I
+ERROR "'"
+TYPEID m
+NOT
+TYPEID going
+TYPEID to
+TYPEID escape
+TYPEID this
+TYPEID newline
+OBJECTID This
+TYPEID is
+TYPEID also
+NOT
+TYPEID escaped
+LONGERROR
+LONGERROR
+OBJECTID This
+TYPEID is
+','
+TYPEID though
+LONGERROR
+LONGERROR
+LONGERROR
+STR_CONST "\\\\"
+STR_CONST "It's fine to have this: \\n in a string"

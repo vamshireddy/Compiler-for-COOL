@@ -1,0 +1,19 @@
+0a1
+> STR_CONST "\\\\"
+2,5d2
+< STR_CONST "\"\""
+< LONGERROR
+< LONGERROR
+< STR_CONST ""
+6a4
+> STR_CONST "\\\\"
+8a7
+> LONGERROR
+10d8
+< STR_CONST ""
+12d9
+< STR_CONST "\""
+13a11
+> STR_CONST "\\"
+14a13
+> STR_CONST "\\"

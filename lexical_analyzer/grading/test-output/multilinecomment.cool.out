@@ -1,0 +1,11 @@
+NOT
+IN
+TYPEID a
+TYPEID comment
+'('
+'*'
+NOT
+TYPEID a
+TYPEID comment
+'*'
+')'

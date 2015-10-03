@@ -1,0 +1,8 @@
+TYPEID before_it
+TYPEID this
+TYPEID string
+LONGERROR
+TYPEID doens
+ERROR "'"
+TYPEID t
+TYPEID end

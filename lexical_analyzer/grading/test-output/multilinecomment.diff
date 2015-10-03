@@ -1,0 +1,12 @@
+3,4c3,4
+< OBJECTID a
+< OBJECTID comment
+---
+> TYPEID a
+> TYPEID comment
+8,9c8,9
+< OBJECTID a
+< OBJECTID comment
+---
+> TYPEID a
+> TYPEID comment

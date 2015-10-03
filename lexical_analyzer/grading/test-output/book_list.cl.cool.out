@@ -1,0 +1,92 @@
+#name "./book_list.cl.cool"
+#2 CLASS
+#2 OBJECTID Book
+#2 INHERITS
+#2 OBJECTID IO
+#2 '{'
+#3 TYPEID title
+#3 ':'
+#3 OBJECTID String
+#3 ';'
+#4 TYPEID author
+#4 ':'
+#4 OBJECTID String
+#4 ';'
+#6 TYPEID initBook
+#6 '('
+#6 TYPEID title_p
+#6 ':'
+#6 OBJECTID String
+#6 ','
+#6 TYPEID author_p
+#6 ':'
+#6 OBJECTID String
+#6 ')'
+#6 ':'
+#6 OBJECTID Book
+#6 '{'
+#7 '{'
+#8 TYPEID title
+#8 ASSIGN
+#8 TYPEID title_p
+#8 ';'
+#9 TYPEID author
+#9 ASSIGN
+#9 TYPEID author_p
+#9 ';'
+#10 TYPEID self
+#10 ';'
+#11 '}'
+#12 '}'
+#12 ';'
+#14 TYPEID print
+#14 '('
+#14 ')'
+#14 ':'
+#14 OBJECTID Book
+#14 '{'
+#15 '{'
+#16 TYPEID out_string
+#16 '('
+#16 STR_CONST "title:      \021"
+#16 ')'
+#16 '.'
+#16 TYPEID out_string
+#16 '('
+#16 TYPEID title
+#16 ')'
+#16 '.'
+#16 TYPEID out_string
+#16 '('
+#16 STR_CONST "\\n"
+#16 ')'
+#16 ';'
+#17 TYPEID out_string
+#17 '('
+#17 STR_CONST "author:     \021"
+#17 ')'
+#17 '.'
+#17 TYPEID out_string
+#17 '('
+#17 TYPEID author
+#17 ')'
+#17 '.'
+#17 TYPEID out_string
+#17 '('
+#17 STR_CONST "\\n"
+#17 ')'
+#17 ';'
+#18 TYPEID self
+#18 ';'
+#19 '}'
+#20 '}'
+#20 ';'
+#21 '}'
+#21 ';'
+#23 CLASS
+#23 OBJECTID Article
+#23 INHERITS
+#23 OBJECTID Book
+#23 '{'
+lexer: malloc.c:3096: sYSMALLOc: Assertion `(old_top == (((mbinptr) (((char *) &((av)->bins[((1) - 1) * 2])) - __builtin_offsetof (struct malloc_chunk, fd)))) && old_size == 0) || ((unsigned long) (old_size) >= (unsigned long)((((__builtin_offsetof (struct malloc_chunk, fd_nextsize))+((2 * (sizeof(size_t))) - 1)) & ~((2 * (sizeof(size_t))) - 1))) && ((old_top)->size & 0x1) && ((unsigned long)old_end & pagemask) == 0)' failed.
+Aborted

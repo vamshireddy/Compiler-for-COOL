@@ -1,0 +1,335 @@
+CLASS
+OBJECTID Foo
+INHERITS
+OBJECTID Bazz
+'{'
+TYPEID a
+':'
+OBJECTID Razz
+ASSIGN
+CASE
+TYPEID self
+OF
+TYPEID n
+':'
+OBJECTID Razz
+'='
+<Invalid Token>
+'('
+NEW
+OBJECTID Bar
+')'
+';'
+TYPEID n
+':'
+OBJECTID Foo
+'='
+<Invalid Token>
+'('
+NEW
+OBJECTID Razz
+')'
+';'
+TYPEID n
+':'
+OBJECTID Bar
+'='
+<Invalid Token>
+TYPEID n
+';'
+ESAC
+';'
+TYPEID b
+':'
+OBJECTID Int
+ASSIGN
+TYPEID a
+'.'
+TYPEID doh
+'('
+')'
+'+'
+TYPEID g
+'.'
+TYPEID doh
+'('
+')'
+'+'
+TYPEID doh
+'('
+')'
+'+'
+TYPEID printh
+'('
+')'
+';'
+TYPEID doh
+'('
+')'
+':'
+OBJECTID Int
+'{'
+'('
+LET
+TYPEID i
+':'
+OBJECTID Int
+ASSIGN
+TYPEID h
+IN
+'{'
+TYPEID h
+ASSIGN
+TYPEID h
+'+'
+INT_CONST 2
+';'
+TYPEID i
+';'
+'}'
+')'
+'}'
+';'
+'}'
+';'
+CLASS
+OBJECTID Bar
+INHERITS
+OBJECTID Razz
+'{'
+TYPEID c
+':'
+OBJECTID Int
+ASSIGN
+TYPEID doh
+'('
+')'
+';'
+TYPEID d
+':'
+OBJECTID Object
+ASSIGN
+TYPEID printh
+'('
+')'
+';'
+'}'
+';'
+CLASS
+OBJECTID Razz
+INHERITS
+OBJECTID Foo
+'{'
+TYPEID e
+':'
+OBJECTID Bar
+ASSIGN
+CASE
+TYPEID self
+OF
+TYPEID n
+':'
+OBJECTID Razz
+'='
+<Invalid Token>
+'('
+NEW
+OBJECTID Bar
+')'
+';'
+TYPEID n
+':'
+OBJECTID Bar
+'='
+<Invalid Token>
+TYPEID n
+';'
+ESAC
+';'
+TYPEID f
+':'
+OBJECTID Int
+ASSIGN
+TYPEID a
+'@'
+OBJECTID Bazz
+'.'
+TYPEID doh
+'('
+')'
+'+'
+TYPEID g
+'.'
+TYPEID doh
+'('
+')'
+'+'
+TYPEID e
+'.'
+TYPEID doh
+'('
+')'
+'+'
+TYPEID doh
+'('
+')'
+'+'
+TYPEID printh
+'('
+')'
+';'
+'}'
+';'
+CLASS
+OBJECTID Bazz
+INHERITS
+OBJECTID IO
+'{'
+TYPEID h
+':'
+OBJECTID Int
+ASSIGN
+INT_CONST 1
+';'
+TYPEID g
+':'
+OBJECTID Foo
+ASSIGN
+CASE
+TYPEID self
+OF
+TYPEID n
+':'
+OBJECTID Bazz
+'='
+<Invalid Token>
+'('
+NEW
+OBJECTID Foo
+')'
+';'
+TYPEID n
+':'
+OBJECTID Razz
+'='
+<Invalid Token>
+'('
+NEW
+OBJECTID Bar
+')'
+';'
+TYPEID n
+':'
+OBJECTID Foo
+'='
+<Invalid Token>
+'('
+NEW
+OBJECTID Razz
+')'
+';'
+TYPEID n
+':'
+OBJECTID Bar
+'='
+<Invalid Token>
+TYPEID n
+';'
+ESAC
+';'
+TYPEID i
+':'
+OBJECTID Object
+ASSIGN
+TYPEID printh
+'('
+')'
+';'
+TYPEID printh
+'('
+')'
+':'
+OBJECTID Int
+'{'
+'{'
+TYPEID out_int
+'('
+TYPEID h
+')'
+';'
+INT_CONST 0
+';'
+'}'
+'}'
+';'
+TYPEID doh
+'('
+')'
+':'
+OBJECTID Int
+'{'
+'('
+LET
+TYPEID i
+':'
+OBJECTID Int
+ASSIGN
+TYPEID h
+IN
+'{'
+TYPEID h
+ASSIGN
+TYPEID h
+'+'
+INT_CONST 1
+';'
+TYPEID i
+';'
+'}'
+')'
+'}'
+';'
+'}'
+';'
+CLASS
+OBJECTID Main
+'{'
+TYPEID a
+':'
+OBJECTID Bazz
+ASSIGN
+NEW
+OBJECTID Bazz
+';'
+TYPEID b
+':'
+OBJECTID Foo
+ASSIGN
+NEW
+OBJECTID Foo
+';'
+TYPEID c
+':'
+OBJECTID Razz
+ASSIGN
+NEW
+OBJECTID Razz
+';'
+TYPEID d
+':'
+OBJECTID Bar
+ASSIGN
+NEW
+OBJECTID Bar
+';'
+TYPEID main
+'('
+')'
+':'
+OBJECTID String
+'{'
+STR_CONST "do nothing"
+'}'
+';'
+'}'
+';'

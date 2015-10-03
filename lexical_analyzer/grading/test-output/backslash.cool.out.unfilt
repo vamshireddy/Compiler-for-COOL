@@ -1,0 +1,18 @@
+#name "./backslash.cool"
+#1 STR_CONST "\\0\\1\\2\\\\0\\\\1\\\\2\\t\\f\\b\\n\\r\\a\\b\\c\\d\\e\\f\\g"
+#3 STR_CONST "\\"
+#3 TYPEID this
+#3 TYPEID is
+#3 TYPEID still
+#3 TYPEID inside
+#3 TYPEID the
+#3 TYPEID string
+#5 OBJECTID I
+#5 ERROR "'"
+#5 TYPEID m
+#5 TYPEID about
+#5 TYPEID to
+#5 TYPEID excape
+#5 TYPEID a
+#5 TYPEID newline
+#5 ERROR "\\"

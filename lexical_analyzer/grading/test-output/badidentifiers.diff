@@ -1,0 +1,40 @@
+1c1
+< OBJECTID inky
+---
+> TYPEID inky
+3c3
+< OBJECTID binky
+---
+> TYPEID binky
+5c5
+< OBJECTID winky
+---
+> TYPEID winky
+7c7
+< OBJECTID dot
+---
+> TYPEID dot
+9,12c9
+< OBJECTID thatwasanumber
+< OBJECTID two
+< '-'
+< OBJECTID objects
+---
+> TYPEID thatwasanumber
+15c12,15
+< TYPEID Types
+---
+> TYPEID objects
+> OBJECTID Two
+> '-'
+> OBJECTID Types
+17,18c17,18
+< OBJECTID underscore
+< TYPEID Type
+---
+> TYPEID underscore
+> OBJECTID Type
+20c20
+< OBJECTID object
+---
+> TYPEID object

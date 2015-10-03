@@ -1,0 +1,9 @@
+#name "./s34.test.cool"
+#1 TYPEID before_it
+#3 TYPEID this
+#3 TYPEID string
+#3 ERROR "\\"
+#4 TYPEID doens
+#4 ERROR "'"
+#4 TYPEID t
+#4 TYPEID end
