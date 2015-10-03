@@ -14,7 +14,8 @@
 #include <cool-parse.h>
 #include <stringtab.h>
 #include <utilities.h>
-int ind = 0;
+int ind = 1;
+int comment_start = 0;
 /* The compiler assumes these identifiers. */
 #define yylval cool_yylval
 #define yylex  cool_yylex
@@ -45,6 +46,8 @@ int quote = 0;
 /*
  *  Create string tables
  */
+
+#define COMMENT_END 9889
 
 %}
 %Start QUOTE
@@ -83,12 +86,57 @@ ARITHMETIC	[\+\-\*\/]
 EQUAL		=
 ESCAPED_STR	"\\"n
 STRING		\"({ALPHABET}|{DIGIT}|{SPACE}|_|{ESCAPED_STR})*\"
-
+STRING_ERR	\"({ALPHABET}|{DIGIT}|{SPACE}|_|"\n")*\"
 %%
 
+\'.\'			{ return yytext[1]; }
+"(*"			{
+				char c;
+			comment_strt: 
+				while((c = yyinput()) && (c!=EOF) && (c!='*'))
+				{
+					if( c == '\n' )
+						curr_lineno++;
+				}
+				if( c == '*' )
+				{
+					while((c = yyinput()) == '*' );
+					if( c == ')' )
+					{
+					}
+					else if( c == EOF )
+					{
+						goto comment_err_eof;
+					}
+					else if( c == '\n' )
+					{
+						curr_lineno++;
+					}
+					else
+					{
+						unput(c);
+						goto comment_strt;
+					}
+				}
+				else if( c == EOF )
+				{
+			comment_err_eof:
+					cool_yylval.error_msg = strdup("EOF in the comment");
+					return ERROR;
+				}
+				else if ( c == '\n' )
+				{
+					curr_lineno++;
+				}
+			}
+"*)"			{
+				cool_yylval.error_msg = strdup("Unmatched *)");
+				return ERROR;
+			}
+
 @			{ return '@'; }
-\<			{ return '<'; }
-\>			{ return '>'; }
+"<"			{ return '<'; }
+">"			{ return '>'; }
 "<="			{ return LE; }
 ~			{ return '~'; }
 {EQUAL}			{ return '='; }
@@ -104,6 +152,8 @@ STRING		\"({ALPHABET}|{DIGIT}|{SPACE}|_|{ESCAPED_STR})*\"
 				else
 					quote = 0;
 			}
+"["			{ return '['; }
+"]"			{ return ']'; }
 \.			{ return '.'; }
 \{			{ return '{'; }
 \}			{ return '}'; }
@@ -112,8 +162,8 @@ STRING		\"({ALPHABET}|{DIGIT}|{SPACE}|_|{ESCAPED_STR})*\"
 {NEW_LINE}		{
 				curr_lineno++;
 			}
-{ELSE}			{ return (ELSE);   }
-{CLASS}			{ return (CLASS);  }
+{ELSE}			{ return (ELSE);}
+{CLASS}			{ return (CLASS);}
 {IF}			{ return (IF);}
 {FI}			{ return (FI);}
 {IN}			{ return (IN);}
@@ -149,17 +199,17 @@ STRING		\"({ALPHABET}|{DIGIT}|{SPACE}|_|{ESCAPED_STR})*\"
 				return (OBJECTID);
 			}
 {STRING}		{
-				char* str = (char*)malloc(sizeof(yytext)-2);
-				int len = strlen(yytext);
+				char* str = (char*)malloc(yyleng-2);
 				int i;
-				for(i=1;i<len;i++)
+				for(i=1;i<yyleng-1;i++)
 				{
 					str[i-1] = yytext[i];
 				}
-				str[len-1] = '\0';
-				cool_yylval.symbol = stringtable.add_string(yytext);
+				str[i] = '\0';
+				cool_yylval.symbol = stringtable.add_string(str);
 				return STR_CONST; 
 			}
 
-.			{ 	return ERROR;	}
+.			{ 	cool_yylval.error_msg = strdup(yytext);
+				return ERROR;	}
 %%
