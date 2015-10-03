@@ -194,7 +194,7 @@ STRING_ERR	\"([^\n"]|{ESCAPED_STR})+\"{1025,*}
 				char c;
 				char prev = 0;
 				int count = 0;
-				while( (c=yyinput()) && (c!='"'))
+				while( (c=yyinput()) && (c!='"') && (c!=EOF))
 				{
 					if( c == '\0' )
 					{
@@ -228,6 +228,11 @@ STRING_ERR	\"([^\n"]|{ESCAPED_STR})+\"{1025,*}
 					}
 					string_buf[count++] = c;
 					prev = c;
+				}
+				if( c == EOF )
+				{
+					cool_yylval.error_msg = "Unterminated string";
+					return ERROR;
 				}
 				string_buf[count] = '\0';
 				cool_yylval.symbol = stringtable.add_string(string_buf);

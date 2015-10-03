@@ -1,0 +1,6 @@
+0a1,2
+> STR_CONST "null character is here ->"
+> ASSIGN
+2,3d3
+< OBJECTID a
+< '+'

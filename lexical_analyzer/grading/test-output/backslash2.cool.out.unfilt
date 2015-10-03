@@ -1,0 +1,35 @@
+#name "./backslash2.cool"
+#1 STR_CONST "I'm not going to escape this newline\n\n"
+#1 TYPEID This
+#1 OBJECTID is
+#1 OBJECTID also
+#1 NOT
+#1 OBJECTID escaped
+#1 ERROR "\\"
+#1 ERROR "\\"
+#2 STR_CONST "\n"
+#2 TYPEID This
+#2 OBJECTID is
+#2 ','
+#2 OBJECTID though
+#2 ERROR "\\"
+#2 ERROR "\\"
+#2 ERROR "\\"
+#3 STR_CONST "\n"
+#3 ERROR "\\"
+#3 ERROR "\\"
+#3 STR_CONST "\n"
+#3 TYPEID It
+#3 ERROR "'"
+#3 OBJECTID s
+#3 OBJECTID fine
+#3 OBJECTID to
+#3 OBJECTID have
+#3 OBJECTID this
+#3 ':'
+#3 ERROR "\\"
+#3 OBJECTID n
+#3 IN
+#3 OBJECTID a
+#3 OBJECTID string
+#3 ERROR "Unterminated string"
