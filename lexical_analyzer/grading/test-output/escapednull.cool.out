@@ -1,1 +1,3 @@
-STR_CONST "This contains an escaped null character \\"
+#name "./escapednull.cool"
+#1 STR_CONST "This contains an escaped null character \\"
+Segmentation fault

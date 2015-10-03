@@ -1,12 +1,5 @@
-0a1,6
-> TYPEID null
-> TYPEID character
-> TYPEID is
-> TYPEID here
-> '-'
-> <Invalid Token>
-2c8,9
-< OBJECTID a
+1c1,2
+< LONGERROR
 ---
+> STR_CONST "null character is here ->"
 > ASSIGN
-> TYPEID a

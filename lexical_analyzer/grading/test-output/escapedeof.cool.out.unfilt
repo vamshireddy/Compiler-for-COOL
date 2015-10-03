@@ -1,10 +1,2 @@
-#name "./escapedeof.cool"
-#1 OBJECTID What
-#1 TYPEID happens
-#1 IF
-#1 OBJECTID I
-#1 TYPEID escape
-#1 TYPEID an
-#1 OBJECTID EOF
-#1 ERROR "?"
-#1 ERROR "\\"
+#name "./escaped_chars_in_comment.cl.cool"
+#7 OBJECTID mno

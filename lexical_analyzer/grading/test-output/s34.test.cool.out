@@ -1,8 +1,3 @@
-TYPEID before_it
-TYPEID this
-TYPEID string
-LONGERROR
-TYPEID doens
-ERROR "'"
-TYPEID t
-TYPEID end
+#name "./s34.test.cool"
+#1 OBJECTID before_it
+Segmentation fault

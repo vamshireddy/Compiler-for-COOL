@@ -1,7 +1,6 @@
-2,3c2,4
+2,3c2,3
 < STR_CONST "string \n(* 123 *)"
 < STR_CONST "string (* \n123 *)"
 ---
-> TYPEID string
-> LONGERROR
-> TYPEID string
+> STR_CONST "string \\\n(* 123 *)"
+> STR_CONST "string (* \\\n123 *)"

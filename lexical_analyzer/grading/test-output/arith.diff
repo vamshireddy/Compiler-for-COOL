@@ -1,0 +1,40 @@
+988c988
+< STR_CONST "\n\tTo add a number to "
+---
+> STR_CONST "\n\\tTo add a number to "
+1003c1003
+< STR_CONST "\tTo negate "
+---
+> STR_CONST "\\tTo negate "
+1018c1018
+< STR_CONST "\tTo find the difference between "
+---
+> STR_CONST "\\tTo find the difference between "
+1033c1033
+< STR_CONST "\tTo find the factorial of "
+---
+> STR_CONST "\\tTo find the factorial of "
+1048c1048
+< STR_CONST "\tTo square "
+---
+> STR_CONST "\\tTo square "
+1063c1063
+< STR_CONST "\tTo cube "
+---
+> STR_CONST "\\tTo cube "
+1078c1078
+< STR_CONST "\tTo find out if "
+---
+> STR_CONST "\\tTo find out if "
+1093c1093
+< STR_CONST "\tTo divide "
+---
+> STR_CONST "\\tTo divide "
+1108c1108
+< STR_CONST "\tTo get a new number...enter j:\n"
+---
+> STR_CONST "\\tTo get a new number...enter j:\n"
+1113c1113
+< STR_CONST "\tTo quit...enter q:\n\n"
+---
+> STR_CONST "\\tTo quit...enter q:\n\n"

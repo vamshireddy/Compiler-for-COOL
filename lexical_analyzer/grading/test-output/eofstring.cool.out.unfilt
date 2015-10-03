@@ -1,21 +1,7 @@
-#name "./eofstring.cool"
-#1 TYPEID there
-#1 TYPEID is
-#1 TYPEID an
-#1 OBJECTID EOF
-#1 TYPEID coming
-#1 '.'
-#1 '.'
-#1 '.'
-#1 TYPEID wait
-#1 TYPEID for
-#1 TYPEID it
-#1 '.'
-#1 '.'
-#1 '.'
-#1 TYPEID wait
-#1 TYPEID for
-#1 TYPEID it
-#1 '.'
-#1 '.'
-#1 '.'
+#name "./endcomment.cool"
+#1 TYPEID This
+#1 OBJECTID comment
+#1 OBJECTID was
+#1 OBJECTID never
+#1 OBJECTID begun
+#1 ERROR "Unmatched *)"

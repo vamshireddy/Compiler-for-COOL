@@ -1,3 +1,2 @@
 #name "./s19.test.cool"
-#2 TYPEID c
-#3 TYPEID d
+#2 STR_CONST "c\n"

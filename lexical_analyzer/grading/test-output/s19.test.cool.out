@@ -1,2 +1,1 @@
-TYPEID c
-TYPEID d
+STR_CONST "c\n"

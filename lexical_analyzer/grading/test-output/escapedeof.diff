@@ -1,9 +1,0 @@
-0a1,8
-> OBJECTID What
-> TYPEID happens
-> IF
-> OBJECTID I
-> TYPEID escape
-> TYPEID an
-> OBJECTID EOF
-> ERROR "?"

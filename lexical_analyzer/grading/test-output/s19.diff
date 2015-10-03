@@ -1,7 +1,6 @@
-1,3c1,2
+1,3c1
 < LONGERROR
 < OBJECTID d
 < LONGERROR
 ---
-> TYPEID c
-> TYPEID d
+> STR_CONST "c\n"

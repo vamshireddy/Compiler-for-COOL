@@ -1,10 +1,4 @@
-TYPEID null
-TYPEID character
-TYPEID is
-TYPEID here
-'-'
-<Invalid Token>
-LONGERROR
+STR_CONST "null character is here ->"
 ASSIGN
-TYPEID a
+OBJECTID a
 '+'

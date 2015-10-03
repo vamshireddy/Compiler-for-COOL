@@ -1,9 +1,2 @@
-OBJECTID What
-TYPEID happens
-IF
-OBJECTID I
-TYPEID escape
-TYPEID an
-OBJECTID EOF
-ERROR "?"
-LONGERROR
+#name "./escapedeof.cool"
+Segmentation fault

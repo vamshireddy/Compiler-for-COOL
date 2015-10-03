@@ -56,6 +56,7 @@ int quote = 0;
 /*
  * Define names for regular expressions here.
  */
+DARROW		"=>"	
 ELSE		(?i:else)
 CLASS		(?i:class)
 FALSE		f(?i:alse)
@@ -86,8 +87,11 @@ ASSIGN		"<-"
 ARITHMETIC	[\+\-\*\/]
 EQUAL		=
 ESCAPED_STR	\\\n
-STRING		\"([^\n"]|{ESCAPED_STR})+\"
+STRING		\"([^\n"]|{ESCAPED_STR})+\"{1,1024}
+STRING_ERR	\"([^\n"]|{ESCAPED_STR})+\"{1025,*}
 %%
+
+{DARROW}		{ return DARROW;}
 
 "--"			{ 	
 				char c;
@@ -172,7 +176,10 @@ STRING		\"([^\n"]|{ESCAPED_STR})+\"
 
 @			{ return '@'; }
 "<"			{ return '<'; }
-">"			{ return '>'; }
+">"			{ 
+				cool_yylval.error_msg = strdup(">");
+				return ERROR;
+			}
 "<="			{ return LE; }
 ~			{ return '~'; }
 {EQUAL}			{ return '='; }
@@ -183,13 +190,59 @@ STRING		\"([^\n"]|{ESCAPED_STR})+\"
 \:			{ return ':';}
 ;			{ return ';';}
 \"			{
-				if( quote == 0 )
-					quote = 1;
-				else
-					quote = 0;
+				
+				char c;
+				char prev = 0;
+				int count = 0;
+				while( (c=yyinput()) && (c!='"'))
+				{
+					if( c == '\0' )
+					{
+						cool_yylval.error_msg = "String contains null character";
+						goto str_err;
+					}
+					if( prev == '\\' )
+					{
+						if( c == 'n' )
+						{
+							string_buf[count-1] = '\n';
+							continue;
+						}
+						else if( c == '0' )
+						{
+							string_buf[count-1] = '0';
+							continue;
+						}
+					}
+					if( prev != '\\' && c == '\n')
+					{
+						cool_yylval.error_msg = "Unterminated string constant";
+						/* Goto the next line */
+						while((c==yyinput()) && (c!='\n'))
+						{
+							count++;
+							if( count >= 1024 )
+								cool_yylval.error_msg = "String constant too long";
+								goto str_err;
+						}
+					}
+					string_buf[count++] = c;
+					prev = c;
+				}
+				string_buf[count] = '\0';
+				cool_yylval.symbol = stringtable.add_string(string_buf);
+				return STR_CONST;
+			str_err:
+				while( (c = yyinput()) && (c!='\n') && (c!='"'));
+				return ERROR;
+
 			}
-"["			{ return '['; }
-"]"			{ return ']'; }
+"["			{	
+				cool_yylval.error_msg = strdup("[");
+				return ERROR; }
+"]"			{ 
+				cool_yylval.error_msg = strdup("]");
+				return ERROR; }
 \.			{ return '.'; }
 \{			{ return '{'; }
 \}			{ return '}'; }
@@ -226,25 +279,13 @@ STRING		\"([^\n"]|{ESCAPED_STR})+\"
 {FALSE}			{	cool_yylval.boolean = 0;
 				return (BOOL_CONST); 	}
 
-{ALPHABET_LOWER}({ALPHABET}|{DIGIT}|{UNDERSCORE})*	{
+{ALPHABET_UPPER}({ALPHABET}|{DIGIT}|{UNDERSCORE})*	{
 				cool_yylval.symbol = idtable.add_string(yytext);
 				return (TYPEID);
 			}
-{ALPHABET_UPPER}({ALPHABET}|{DIGIT}|{UNDERSCORE})*	{
+{ALPHABET_LOWER}({ALPHABET}|{DIGIT}|{UNDERSCORE})*	{
 				cool_yylval.symbol = idtable.add_string(yytext);
 				return (OBJECTID);
-			}
-{STRING}		{
-				char* str = (char*)malloc(yyleng-2);
-				int i;
-				int j;
-				for(i=1,j=0;i<yyleng-1;i++)
-				{
-					str[j++] = yytext[i];
-				}
-				str[j] = '\0';
-				cool_yylval.symbol = stringtable.add_string(str);
-				return STR_CONST; 
 			}
 .			{ 	cool_yylval.error_msg = strdup(yytext);
 				return ERROR;	}
