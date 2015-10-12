@@ -133,8 +133,11 @@
     %type <program> program
     %type <classes> class_list
     %type <class_> class
+    %type <feature> feature
     
     /* You will want to change the following line. */
+    %type <features> feature_list
+    %type <formals> formal_list
     %type <features> feature_list
     
     /* Precedence declarations go here. */
@@ -189,7 +192,7 @@
 	{
 		$$ = no_expr();
 	}
-	| '<-' expr
+	| ASSIGN expr
 	{
 		$$ = $2;
 	}
@@ -212,11 +215,60 @@
 	}
 	;
 
-	expr: OBJECTID '<-' expr
+	expr: OBJECTID ASSIGN expr
 	{
 		$$ = assign($1, $3);
 	}
-	|
+	| BOOL_CONST
+	{
+		$$ = bool_const($1);
+	}
+	| STR_CONST
+	{
+		$$ = string_const($1);
+	}
+	| INT_CONST
+	{
+		$$ = int_const($1);
+	}
+	| OBJECTID
+	{
+		$$ = object($1);
+	}
+	| '(' expr ')'
+	{
+		$$ = $2;
+	}
+	| NOT expr
+	{
+		$$ = comp($2);
+	}
+	| '~' expr
+	{
+		$$ = neg($2);
+	}
+	| ISVOID expr
+	{
+		$$ = isvoid($2);
+	}
+	| NEW OBJECTID
+	{
+		$$ = bool_const($2);
+	}
+	| '{' expr_list '}'
+	{
+		$$ = block($2);
+	}
+	;
+	
+	expr_list: expr
+	{
+		$$ = single_Expressions($1);
+	}
+	| expr expr_list
+	{
+		$$ = append_Expressions($2, single_Expressions($1));
+	}
 	;
 
 
