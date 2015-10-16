@@ -11,7 +11,6 @@
   
   extern char *curr_filename;
   
-  
   /* Locations */
   #define YYLTYPE int              /* the type of locations */
   #define cool_yylloc curr_lineno  /* use the curr_lineno from the lexer
@@ -140,11 +139,14 @@
     %type <expression> expr
     %type <expressions> expr_list
     %type <expression> optional_Assignment
-
-    
+    %type <expression> let_id_opt
+    %type <expressions> let_ids_opt
+    %type <expression> let_init_opt
     /* Precedence declarations go here. */
+    %left '<' '=' LE
     %left '+' '-'
     %left '*' '/'
+    %left LET
     %%
     	/* 
     		Save the root of the abstract syntax tree in a global variable.
@@ -217,11 +219,46 @@
 		$$ = formal($1, $3);
 	}
 	;
-	
+
+	/* Let ids optional */
+	let_ids_opt: let_id_opt let_ids_opt {
+		$$ = append_Expressions($2, single_Expressions($1));	
+	}
+	| {
+		$$ = nil_Expressions();
+	}
+	;
+
+	/* Let id optional */
+	let_id_opt: ',' OBJECTID ':' TYPEID let_init_opt {
+		assign($2, $5);
+		$$ = let($2, $4, $5, no_expr());
+	}
+	;
+
+	/* let init opt */
+	let_init_opt: ASSIGN expr {
+		$$ = $2;		
+	}
+	| {
+		$$ = no_expr();
+	}
+	;
 
 	/* Expression productions */
 	expr: OBJECTID ASSIGN expr{
 		$$ = assign($1, $3); 
+	}
+	| LET OBJECTID ':' TYPEID let_init_opt let_ids_opt IN expr %prec LET {
+		
+		assign($2, $5);
+		Expression prev = $8;
+		for(int i = $6->next($6->first()); $6->more(i) ; i=$6->next(i))
+		{
+			Expression l = $6->nth(i);
+			prev = let(l->get_identifier(), l->get_type_decl(), l->get_init(), prev);
+		}
+		$$ = let($2, $4, $5, prev);
 	}
 	| STR_CONST {
 		$$ = string_const($1);
@@ -265,15 +302,16 @@
 	}
 	;
 	
-	expr_list: expr
+	expr_list: expr ';'
 	{
 		$$ = single_Expressions($1);
 	}
-	| expr expr_list
+	| expr ';' expr_list
 	{
-		$$ = append_Expressions($2, single_Expressions($1));
+		$$ = append_Expressions($3, single_Expressions($1));
 	}
 	;
+
 
 
     /* end of grammar */

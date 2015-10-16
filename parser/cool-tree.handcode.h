@@ -44,6 +44,7 @@ typedef Expressions_class *Expressions;
 typedef list_node<Case> Cases_class;
 typedef Cases_class *Cases;
 
+
 #define Program_EXTRAS                          \
 virtual void dump_with_types(ostream&, int) = 0; 
 
