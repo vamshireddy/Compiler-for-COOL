@@ -142,6 +142,7 @@
     %type <expression> let_id_opt
     %type <expressions> let_ids_opt
     %type <expression> let_init_opt
+    %type <cases> case_labels
     /* Precedence declarations go here. */
     %left '<' '=' LE
     %left '+' '-'
@@ -245,6 +246,15 @@
 	}
 	;
 
+	/* case labels */
+	case_labels: OBJECTID ':' TYPEID '=>' expr ';' case_labels {
+		$$ = append_Cases(single_Cases(branch($1, $3, $5)), $7);
+	}
+	| {
+		$$ = nil_Cases();
+	}
+	;
+
 	/* Expression productions */
 	expr: OBJECTID ASSIGN expr{
 		$$ = assign($1, $3); 
@@ -259,6 +269,15 @@
 			prev = let(l->get_identifier(), l->get_type_decl(), l->get_init(), prev);
 		}
 		$$ = let($2, $4, $5, prev);
+	}
+	| CASE expr OF case_labels ESAC {
+		$$ = typcase( $2, $4);
+	}
+	| WHILE expr LOOP expr POOL {
+		$$ = loop( $2, $4);
+	}
+	| IF expr THEN expr ELSE expr FI {
+		$$ = cond($2, $4, $6);
 	}
 	| STR_CONST {
 		$$ = string_const($1);
