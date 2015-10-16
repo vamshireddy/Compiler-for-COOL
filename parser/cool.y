@@ -134,14 +134,17 @@
     %type <classes> class_list
     %type <class_> class
     %type <feature> feature
-    
-    /* You will want to change the following line. */
     %type <features> feature_list
+    %type <formal> formal
     %type <formals> formal_list
-    %type <features> feature_list
+    %type <expression> expr
+    %type <expressions> expr_list
+    %type <expression> optional_Assignment
+
     
     /* Precedence declarations go here. */
-
+    %left '+' '-'
+    %left '*' '/'
     %%
     	/* 
     		Save the root of the abstract syntax tree in a global variable.
@@ -205,58 +208,59 @@
 	}
 	| formal ',' formal_list
 	{
-		$$ = append_Formals($2, single_Formals($1));
+		$$ = append_Formals($3, single_Formals($1));
 	}
 	;
 
 	formal: OBJECTID ':' TYPEID
 	{
-		$$ = formal($1, $2);
+		$$ = formal($1, $3);
 	}
 	;
+	
 
-	expr: OBJECTID ASSIGN expr
-	{
-		$$ = assign($1, $3);
+	/* Expression productions */
+	expr: OBJECTID ASSIGN expr{
+		$$ = assign($1, $3); 
 	}
-	| BOOL_CONST
-	{
-		$$ = bool_const($1);
-	}
-	| STR_CONST
-	{
+	| STR_CONST {
 		$$ = string_const($1);
 	}
-	| INT_CONST
-	{
+	| INT_CONST {
 		$$ = int_const($1);
 	}
-	| OBJECTID
-	{
+	| OBJECTID {
 		$$ = object($1);
 	}
-	| '(' expr ')'
-	{
+	| '(' expr ')' {
 		$$ = $2;
 	}
-	| NOT expr
-	{
+	| expr '=' expr {
+		$$ = eq($1, $3);
+	}
+	| expr LE expr {
+		$$ = leq($1, $3);
+	}
+	| expr '<' expr{
+		$$ = lt($1, $3);
+	}
+	| NOT expr {
 		$$ = comp($2);
 	}
-	| '~' expr
-	{
+	| '~' expr {
 		$$ = neg($2);
 	}
-	| ISVOID expr
-	{
+	| BOOL_CONST {
+		$$ = bool_const($1);
+	}
+
+	| ISVOID expr {
 		$$ = isvoid($2);
 	}
-	| NEW OBJECTID
-	{
-		$$ = bool_const($2);
+	| NEW OBJECTID {
+		$$ = new_($2);
 	}
-	| '{' expr_list '}'
-	{
+	| '{' expr_list '}' {
 		$$ = block($2);
 	}
 	;
