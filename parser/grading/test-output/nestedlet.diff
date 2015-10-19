@@ -1,0 +1,32 @@
+17a18,19
+>       _plus
+> 
+34,40d35
+<             z
+<             Object
+< 
+<             _no_expr
+<             : _no_type
+< 
+<             _let
+55,61d49
+<                   c
+<                   Object
+< 
+<                   _no_expr
+<                   : _no_type
+< 
+<                   _let
+69,70d56
+<                     _plus
+< 
+74,78d59
+< 
+<                       _int
+<                         5
+<                       : _no_type
+<                     : _no_type
+83a65,67
+> 
+>         _int
+>           5

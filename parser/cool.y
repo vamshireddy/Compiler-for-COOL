@@ -1,3 +1,4 @@
+
 /*
 *  cool.y
 *              Parser definition for the COOL language.
@@ -15,7 +16,7 @@
   #define YYLTYPE int              /* the type of locations */
   #define cool_yylloc curr_lineno  /* use the curr_lineno from the lexer
   for the location of tokens */
-    
+    Symbol cur_class_id = NULL;
     extern int node_lineno;          /* set before constructing a tree node
     to whatever you want the line number
     for the tree node to be */
@@ -136,12 +137,15 @@
     %type <features> feature_list
     %type <formal> formal
     %type <formals> formal_list
+    %type <formals> list_of_formals
     %type <expression> expr
     %type <expressions> expr_list
     %type <expression> optional_Assignment
     %type <expression> let_id_opt
     %type <expressions> let_ids_opt
     %type <expression> let_init_opt
+    %type <expressions> list_of_expr_args
+    %type <expressions> expr_args_list 
     %type <cases> case_labels
     /* Precedence declarations go here. */
     %left '<' '=' LE
@@ -165,19 +169,21 @@
     	;
     
     	/* If no parent is specified, the class inherits from the Object class. */
-    	class	: CLASS TYPEID '{' feature_list '}' ';'
-    	{ $$ = class_($2,idtable.add_string("Object"),$4,
-    	stringtable.add_string(curr_filename)); }
-    	| CLASS TYPEID INHERITS TYPEID '{' feature_list '}' ';'
-    	{ $$ = class_($2,$4,$6,stringtable.add_string(curr_filename)); }
-    	;
+    	class	: CLASS TYPEID '{' feature_list '}' ';' 
+	{
+		$$ = class_($2,idtable.add_string("Object"),$4,
+    		stringtable.add_string(curr_filename));
+	}
+    	| CLASS TYPEID INHERITS TYPEID '{' feature_list '}' ';' {
+		$$ = class_($2,$4,$6,stringtable.add_string(curr_filename));
+	};
     
 	/* Feature list may be empty, but no empty features in list. */
 	feature_list: 
 	{
 		$$ = nil_Features(); 
 	}
-	| feature_list feature
+	| feature_list feature ';'
 	{
 		$$ = append_Features($1, single_Features($2));
 	}
@@ -205,21 +211,43 @@
 	;
 
 	formal_list: 
-	formal
 	{
+		$$ = nil_Formals();
+	}
+	| list_of_formals
+	{
+		$$ = $1;
+	};
+
+	list_of_formals: formal {
 		$$ = single_Formals($1);
 	}
-	| formal ',' formal_list
-	{
-		$$ = append_Formals($3, single_Formals($1));
-	}
-	;
+	| formal ',' list_of_formals {
+		$$ = append_Formals(single_Formals($1), $3);
+	};
 
 	formal: OBJECTID ':' TYPEID
 	{
 		$$ = formal($1, $3);
 	}
 	;
+
+	/* list of expr args */
+	expr_args_list: 
+	{
+		$$ = nil_Expressions();
+	}
+	| list_of_expr_args
+	{
+		$$ = $1;
+	};
+
+	list_of_expr_args: expr {
+		$$ = single_Expressions($1);
+	}
+	| expr ',' list_of_expr_args {
+		$$ = append_Expressions(single_Expressions($1), $3);
+	};
 
 	/* Let ids optional */
 	let_ids_opt: let_id_opt let_ids_opt {
@@ -259,13 +287,16 @@
 	expr: OBJECTID ASSIGN expr{
 		$$ = assign($1, $3); 
 	}
+	| OBJECTID '(' expr_args_list ')' {
+		$$ = dispatch(object(cur_class_id), $1, $3) ;
+	}
 	| LET OBJECTID ':' TYPEID let_init_opt let_ids_opt IN expr %prec LET {
 		
 		assign($2, $5);
 		Expression prev = $8;
 		for(int i = $6->next($6->first()); $6->more(i) ; i=$6->next(i))
 		{
-			Expression l = $6->nth(i);
+			let_class* l = (let_class*)$6->nth(i);
 			prev = let(l->get_identifier(), l->get_type_decl(), l->get_init(), prev);
 		}
 		$$ = let($2, $4, $5, prev);
@@ -290,6 +321,18 @@
 	}
 	| '(' expr ')' {
 		$$ = $2;
+	}
+	| expr '+' expr {
+		$$ = plus($1, $3);
+	}
+	| expr '-' expr {
+		$$ = sub($1, $3);
+	}
+	| expr '*' expr {
+		$$ = mul($1, $3);
+	}
+	| expr '/' expr {
+		$$ = divide($1, $3);
 	}
 	| expr '=' expr {
 		$$ = eq($1, $3);
@@ -327,7 +370,7 @@
 	}
 	| expr ';' expr_list
 	{
-		$$ = append_Expressions($3, single_Expressions($1));
+		$$ = append_Expressions(single_Expressions($1), $3);
 	}
 	;
 

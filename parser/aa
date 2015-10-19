@@ -1,0 +1,209 @@
+No debugging available
+Starting parse
+Entering state 0
+Reading a token: Next token is token CLASS (: )
+Shifting token CLASS (: )
+Entering state 1
+Reading a token: Next token is token TYPEID (: )
+Shifting token TYPEID (: )
+Entering state 5
+Reading a token: Next token is token '{' (: )
+Shifting token '{' (: )
+Entering state 9
+Reducing stack by rule 6 (line 183):
+-> $$ = nterm feature_list (: )
+Stack now 0 1 5 9
+Entering state 11
+Reading a token: Next token is token OBJECTID (: )
+Shifting token OBJECTID (: )
+Entering state 13
+Reading a token: Next token is token '(' (: )
+Shifting token '(' (: )
+Entering state 17
+Reading a token: Next token is token ')' (: )
+Reducing stack by rule 12 (line 214):
+-> $$ = nterm formal_list (: )
+Stack now 0 1 5 9 11 13 17
+Entering state 23
+Next token is token ')' (: )
+Shifting token ')' (: )
+Entering state 29
+Reading a token: Next token is token ':' (: )
+Shifting token ':' (: )
+Entering state 34
+Reading a token: Next token is token TYPEID (: )
+Shifting token TYPEID (: )
+Entering state 51
+Reading a token: Next token is token '{' (: )
+Shifting token '{' (: )
+Entering state 72
+Reading a token: Next token is token '{' (: )
+Shifting token '{' (: )
+Entering state 47
+Reading a token: Next token is token WHILE (: )
+Shifting token WHILE (: )
+Entering state 38
+Reading a token: Next token is token INT_CONST (: )
+Shifting token INT_CONST (: )
+Entering state 43
+Reducing stack by rule 35 (line 316):
+   $1 = token INT_CONST (: )
+-> $$ = nterm expr (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 38
+Entering state 54
+Reading a token: Next token is token LOOP (: )
+Shifting token LOOP (: )
+Entering state 75
+Reading a token: Next token is token INT_CONST (: )
+Shifting token INT_CONST (: )
+Entering state 43
+Reducing stack by rule 35 (line 316):
+   $1 = token INT_CONST (: )
+-> $$ = nterm expr (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 38 54 75
+Entering state 94
+Reading a token: Next token is token POOL (: )
+Shifting token POOL (: )
+Entering state 104
+Reducing stack by rule 32 (line 307):
+   $1 = token WHILE (: )
+   $2 = nterm expr (: )
+   $3 = token LOOP (: )
+   $4 = nterm expr (: )
+   $5 = token POOL (: )
+-> $$ = nterm expr (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47
+Entering state 61
+Reading a token: Next token is token ';' (: )
+Shifting token ';' (: )
+Entering state 81
+Reading a token: Next token is token WHILE (: )
+Shifting token WHILE (: )
+Entering state 38
+Reading a token: Next token is token INT_CONST (: )
+Shifting token INT_CONST (: )
+Entering state 43
+Reducing stack by rule 35 (line 316):
+   $1 = token INT_CONST (: )
+-> $$ = nterm expr (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 61 81 38
+Entering state 54
+Reading a token: Next token is token LOOP (: )
+Shifting token LOOP (: )
+Entering state 75
+Reading a token: Next token is token WHILE (: )
+Shifting token WHILE (: )
+Entering state 38
+Reading a token: Next token is token INT_CONST (: )
+Shifting token INT_CONST (: )
+Entering state 43
+Reducing stack by rule 35 (line 316):
+   $1 = token INT_CONST (: )
+-> $$ = nterm expr (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 61 81 38 54 75 38
+Entering state 54
+Reading a token: Next token is token LOOP (: )
+Shifting token LOOP (: )
+Entering state 75
+Reading a token: Next token is token INT_CONST (: )
+Shifting token INT_CONST (: )
+Entering state 43
+Reducing stack by rule 35 (line 316):
+   $1 = token INT_CONST (: )
+-> $$ = nterm expr (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 61 81 38 54 75 38 54 75
+Entering state 94
+Reading a token: Next token is token POOL (: )
+Shifting token POOL (: )
+Entering state 104
+Reducing stack by rule 32 (line 307):
+   $1 = token WHILE (: )
+   $2 = nterm expr (: )
+   $3 = token LOOP (: )
+   $4 = nterm expr (: )
+   $5 = token POOL (: )
+-> $$ = nterm expr (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 61 81 38 54 75
+Entering state 94
+Reading a token: Next token is token POOL (: )
+Shifting token POOL (: )
+Entering state 104
+Reducing stack by rule 32 (line 307):
+   $1 = token WHILE (: )
+   $2 = nterm expr (: )
+   $3 = token LOOP (: )
+   $4 = nterm expr (: )
+   $5 = token POOL (: )
+-> $$ = nterm expr (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 61 81
+Entering state 61
+Reading a token: Next token is token ';' (: )
+Shifting token ';' (: )
+Entering state 81
+Reading a token: Next token is token WHILE (: )
+Shifting token WHILE (: )
+Entering state 38
+Reading a token: Next token is token INT_CONST (: )
+Shifting token INT_CONST (: )
+Entering state 43
+Reducing stack by rule 35 (line 316):
+   $1 = token INT_CONST (: )
+-> $$ = nterm expr (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 61 81 61 81 38
+Entering state 54
+Reading a token: Next token is token LOOP (: )
+Shifting token LOOP (: )
+Entering state 75
+Reading a token: Next token is token INT_CONST (: )
+Shifting token INT_CONST (: )
+Entering state 43
+Reducing stack by rule 35 (line 316):
+   $1 = token INT_CONST (: )
+-> $$ = nterm expr (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 61 81 61 81 38 54 75
+Entering state 94
+Reading a token: Next token is token LOOP (: )
+"grading/while.test", line 8: syntax error at or near LOOP
+Error: popping nterm expr (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 61 81 61 81 38 54 75
+Error: popping token LOOP (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 61 81 61 81 38 54
+Error: popping nterm expr (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 61 81 61 81 38
+Error: popping token WHILE (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 61 81 61 81
+Error: popping token ';' (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 61 81 61
+Error: popping nterm expr (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 61 81
+Error: popping token ';' (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47 61
+Error: popping nterm expr (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72 47
+Error: popping token '{' (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51 72
+Error: popping token '{' (: )
+Stack now 0 1 5 9 11 13 17 23 29 34 51
+Error: popping token TYPEID (: )
+Stack now 0 1 5 9 11 13 17 23 29 34
+Error: popping token ':' (: )
+Stack now 0 1 5 9 11 13 17 23 29
+Error: popping token ')' (: )
+Stack now 0 1 5 9 11 13 17 23
+Error: popping nterm formal_list (: )
+Stack now 0 1 5 9 11 13 17
+Error: popping token '(' (: )
+Stack now 0 1 5 9 11 13
+Error: popping token OBJECTID (: )
+Stack now 0 1 5 9 11
+Error: popping nterm feature_list (: )
+Stack now 0 1 5 9
+Error: popping token '{' (: )
+Stack now 0 1 5
+Error: popping token TYPEID (: )
+Stack now 0 1
+Error: popping token CLASS (: )
+Stack now 0
+Cleanup: discarding lookahead token LOOP (: )
+Stack now 0
+Compilation halted due to lex and parse errors
