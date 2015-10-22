@@ -1,3 +1,3 @@
-# Classroom Object Oriented Langage (COOL) Compiler
-* This project includes an implementation of COOL Compiler.
-* It runs on MIPS ISA.
+# Compiler for Classroom Object Oriented Langage (COOL)
+* http://web.stanford.edu/class/cs143/
+* Lexical analyzer uses flex and parser uses bison.
