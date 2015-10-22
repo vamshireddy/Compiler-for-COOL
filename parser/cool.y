@@ -298,7 +298,8 @@
 		assign($2, $5);
 		$$ = let($2, $4, $5, no_expr());
 	}
-	| ',' error {
+	| ',' error ','
+	{
 		yyerrok;
 	}
 	;
@@ -331,16 +332,16 @@
 		$$ = assign($1, $3); 
 	}
 	| expr '.' OBJECTID '(' expr_args_list ')' {
-		SET_NODELOC(@6);
-		$$ = static_dispatch($1, idtable.add_string(((Entry*)$1)->get_string()), $3, $5);	
+		SET_NODELOC(@1);
+		$$ = dispatch($1, $3, $5);	
 	}
 	| expr '@' TYPEID '.' OBJECTID '(' expr_args_list ')' {
-		SET_NODELOC(@8);
+		SET_NODELOC(@1);
 		$$ = static_dispatch($1, $3, $5, $7);
 	}
 	| OBJECTID '(' expr_args_list ')' {
 		SET_NODELOC(@4);
-		$$ = dispatch(object(idtable.add_string(cur_class_id)), $1, $3) ;
+		$$ = dispatch(object(idtable.add_string("self")), $1, $3) ;
 	}
 	| LET OBJECTID ':' TYPEID let_init_opt let_ids_opt IN expr %prec LET {
 		SET_NODELOC(@4);
