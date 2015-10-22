@@ -16,7 +16,7 @@
   #define YYLTYPE int              /* the type of locations */
   #define cool_yylloc curr_lineno  /* use the curr_lineno from the lexer
   for the location of tokens */
-    Symbol cur_class_id = NULL;
+    char cur_class_id[20];
     extern int node_lineno;          /* set before constructing a tree node
     to whatever you want the line number
     for the tree node to be */
@@ -152,7 +152,7 @@
     %left ASSIGN
     %left NOT
     %left LET
-    %left '<' '=' LE
+    %nonassoc '<' '=' LE
     %left '+' '-'
     %left '*' '/'
     %left ISVOID
@@ -182,12 +182,14 @@
 	{
 		@$ = @6;
 		SET_NODELOC(@6);
+		strcpy(cur_class_id, $2->get_string());
 		$$ = class_($2,idtable.add_string("Object"),$4,
     		stringtable.add_string(curr_filename));
 	}
     	| CLASS TYPEID INHERITS TYPEID '{' feature_list '}' ';' {
 		@$ = @8;
 		SET_NODELOC(@8);
+		strcpy(cur_class_id, $2->get_string());
 		$$ = class_($2,$4,$6,stringtable.add_string(curr_filename));
 	}
 	| CLASS TYPEID error TYPEID '{' feature_list '}' ';' {
@@ -330,7 +332,7 @@
 	}
 	| expr '.' OBJECTID '(' expr_args_list ')' {
 		SET_NODELOC(@6);
-		$$ = static_dispatch($1, (Entry*)$1, $3, $5);	
+		$$ = static_dispatch($1, idtable.add_string(((Entry*)$1)->get_string()), $3, $5);	
 	}
 	| expr '@' TYPEID '.' OBJECTID '(' expr_args_list ')' {
 		SET_NODELOC(@8);
@@ -338,7 +340,7 @@
 	}
 	| OBJECTID '(' expr_args_list ')' {
 		SET_NODELOC(@4);
-		$$ = dispatch(object(cur_class_id), $1, $3) ;
+		$$ = dispatch(object(idtable.add_string(cur_class_id)), $1, $3) ;
 	}
 	| LET OBJECTID ':' TYPEID let_init_opt let_ids_opt IN expr %prec LET {
 		SET_NODELOC(@4);
