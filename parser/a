@@ -1,0 +1,432 @@
+No debugging available
+Starting parse
+Entering state 0
+Reading a token: Next token is token CLASS (: )
+Shifting token CLASS (: )
+Entering state 1
+Reading a token: Next token is token TYPEID (: )
+Shifting token TYPEID (: )
+Entering state 5
+Reading a token: Next token is token '{' (: )
+Shifting token '{' (: )
+Entering state 10
+Reducing stack by rule 7 (line 200):
+-> $$ = nterm feature_list (: )
+Stack now 0 1 5 10
+Entering state 13
+Reading a token: Next token is token OBJECTID (: )
+Shifting token OBJECTID (: )
+Entering state 17
+Reading a token: Next token is token ':' (: )
+Shifting token ':' (: )
+Entering state 24
+Reading a token: Next token is token TYPEID (: )
+Shifting token TYPEID (: )
+Entering state 33
+Reading a token: Next token is token ASSIGN (: )
+Shifting token ASSIGN (: )
+Entering state 39
+Reading a token: Next token is token INT_CONST (: )
+Shifting token INT_CONST (: )
+Entering state 51
+Reducing stack by rule 41 (line 374):
+   $1 = token INT_CONST (: )
+-> $$ = nterm expr (: )
+Stack now 0 1 5 10 13 17 24 33 39
+Entering state 58
+Reading a token: Next token is token ';' (: )
+Reducing stack by rule 13 (line 233):
+   $1 = token ASSIGN (: )
+   $2 = nterm expr (: )
+-> $$ = nterm optional_Assignment (: )
+Stack now 0 1 5 10 13 17 24 33
+Entering state 40
+Reducing stack by rule 11 (line 222):
+   $1 = token OBJECTID (: )
+   $2 = token ':' (: )
+   $3 = token TYPEID (: )
+   $4 = nterm optional_Assignment (: )
+-> $$ = nterm feature (: )
+Stack now 0 1 5 10 13
+Entering state 19
+Next token is token ';' (: )
+Shifting token ';' (: )
+Entering state 26
+Reducing stack by rule 8 (line 203):
+   $1 = nterm feature_list (: )
+   $2 = nterm feature (: )
+   $3 = token ';' (: )
+-> $$ = nterm feature_list (: )
+Stack now 0 1 5 10
+Entering state 13
+Reading a token: Next token is token OBJECTID (: )
+Shifting token OBJECTID (: )
+Entering state 17
+Reading a token: Next token is token ':' (: )
+Shifting token ':' (: )
+Entering state 24
+Reading a token: Next token is token TYPEID (: )
+Shifting token TYPEID (: )
+Entering state 33
+Reading a token: Next token is token ';' (: )
+Reducing stack by rule 12 (line 230):
+-> $$ = nterm optional_Assignment (: )
+Stack now 0 1 5 10 13 17 24 33
+Entering state 40
+Reducing stack by rule 11 (line 222):
+   $1 = token OBJECTID (: )
+   $2 = token ':' (: )
+   $3 = token TYPEID (: )
+   $4 = nterm optional_Assignment (: )
+-> $$ = nterm feature (: )
+Stack now 0 1 5 10 13
+Entering state 19
+Next token is token ';' (: )
+Shifting token ';' (: )
+Entering state 26
+Reducing stack by rule 8 (line 203):
+   $1 = nterm feature_list (: )
+   $2 = nterm feature (: )
+   $3 = token ';' (: )
+-> $$ = nterm feature_list (: )
+Stack now 0 1 5 10
+Entering state 13
+Reading a token: Next token is token OBJECTID (: )
+Shifting token OBJECTID (: )
+Entering state 17
+Reading a token: Next token is token '(' (: )
+Shifting token '(' (: )
+Entering state 23
+Reading a token: Next token is token OBJECTID (: )
+Shifting token OBJECTID (: )
+Entering state 29
+Reading a token: Next token is token ':' (: )
+Shifting token ':' (: )
+Entering state 36
+Reading a token: Next token is token TYPEID (: )
+Shifting token TYPEID (: )
+Entering state 41
+Reducing stack by rule 18 (line 258):
+   $1 = token OBJECTID (: )
+   $2 = token ':' (: )
+   $3 = token TYPEID (: )
+-> $$ = nterm formal (: )
+Stack now 0 1 5 10 13 17 23
+Entering state 32
+Reading a token: Next token is token ',' (: )
+Shifting token ',' (: )
+Entering state 38
+Reading a token: Next token is token OBJECTID (: )
+Shifting token OBJECTID (: )
+Entering state 29
+Reading a token: Next token is token ':' (: )
+Shifting token ':' (: )
+Entering state 36
+Reading a token: Next token is token TYPEID (: )
+Shifting token TYPEID (: )
+Entering state 41
+Reducing stack by rule 18 (line 258):
+   $1 = token OBJECTID (: )
+   $2 = token ':' (: )
+   $3 = token TYPEID (: )
+-> $$ = nterm formal (: )
+Stack now 0 1 5 10 13 17 23 32 38
+Entering state 32
+Reading a token: Next token is token ',' (: )
+Shifting token ',' (: )
+Entering state 38
+Reading a token: Next token is token OBJECTID (: )
+Shifting token OBJECTID (: )
+Entering state 29
+Reading a token: Next token is token ':' (: )
+Shifting token ':' (: )
+Entering state 36
+Reading a token: Next token is token TYPEID (: )
+Shifting token TYPEID (: )
+Entering state 41
+Reducing stack by rule 18 (line 258):
+   $1 = token OBJECTID (: )
+   $2 = token ':' (: )
+   $3 = token TYPEID (: )
+-> $$ = nterm formal (: )
+Stack now 0 1 5 10 13 17 23 32 38 32 38
+Entering state 32
+Reading a token: Next token is token ')' (: )
+Reducing stack by rule 16 (line 248):
+   $1 = nterm formal (: )
+-> $$ = nterm list_of_formals (: )
+Stack now 0 1 5 10 13 17 23 32 38 32 38
+Entering state 43
+Reducing stack by rule 17 (line 252):
+   $1 = nterm formal (: )
+   $2 = token ',' (: )
+   $3 = nterm list_of_formals (: )
+-> $$ = nterm list_of_formals (: )
+Stack now 0 1 5 10 13 17 23 32 38
+Entering state 43
+Reducing stack by rule 17 (line 252):
+   $1 = nterm formal (: )
+   $2 = token ',' (: )
+   $3 = nterm list_of_formals (: )
+-> $$ = nterm list_of_formals (: )
+Stack now 0 1 5 10 13 17 23
+Entering state 31
+Reducing stack by rule 15 (line 243):
+   $1 = nterm list_of_formals (: )
+-> $$ = nterm formal_list (: )
+Stack now 0 1 5 10 13 17 23
+Entering state 30
+Next token is token ')' (: )
+Shifting token ')' (: )
+Entering state 37
+Reading a token: Next token is token ':' (: )
+Shifting token ':' (: )
+Entering state 42
+Reading a token: Next token is token TYPEID (: )
+Shifting token TYPEID (: )
+Entering state 59
+Reading a token: Next token is token '{' (: )
+Shifting token '{' (: )
+Entering state 84
+Reading a token: Next token is token CASE (: )
+Shifting token CASE (: )
+Entering state 47
+Reading a token: Next token is token OF (: )
+"grading/casenoexpr.test", line 7: syntax error at or near OF
+Shifting token error (: )
+Entering state 63
+Next token is token OF (: )
+Error: discarding token OF (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token OBJECTID (: )
+Error: discarding token OBJECTID (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token ':' (: )
+Error: discarding token ':' (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token TYPEID (: )
+Error: discarding token TYPEID (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token DARROW (: )
+Error: discarding token DARROW (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token OBJECTID (: )
+Error: discarding token OBJECTID (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token ';' (: )
+Error: discarding token ';' (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token OBJECTID (: )
+Error: discarding token OBJECTID (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token ':' (: )
+Error: discarding token ':' (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token TYPEID (: )
+Error: discarding token TYPEID (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token DARROW (: )
+Error: discarding token DARROW (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token '{' (: )
+Error: discarding token '{' (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token OBJECTID (: )
+Error: discarding token OBJECTID (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token ';' (: )
+Error: discarding token ';' (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token OBJECTID (: )
+Error: discarding token OBJECTID (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token ';' (: )
+Error: discarding token ';' (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token '}' (: )
+Error: discarding token '}' (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token ';' (: )
+Error: discarding token ';' (: )
+Error: popping token error (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84 47
+Shifting token error (: )
+Entering state 63
+Reading a token: Next token is token ESAC (: )
+Shifting token ESAC (: )
+Entering state 88
+Reducing stack by rule 37 (line 359):
+   $1 = token CASE (: )
+   $2 = token error (: )
+   $3 = token ESAC (: )
+-> $$ = nterm expr (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84
+Entering state 107
+Reading a token: Next token is token '}' (: )
+Shifting token '}' (: )
+Entering state 119
+Reducing stack by rule 10 (line 216):
+   $1 = token OBJECTID (: )
+   $2 = token '(' (: )
+   $3 = nterm formal_list (: )
+   $4 = token ')' (: )
+   $5 = token ':' (: )
+   $6 = token TYPEID (: )
+   $7 = token '{' (: )
+   $8 = nterm expr (: )
+   $9 = token '}' (: )
+-> $$ = nterm feature (: )
+Stack now 0 1 5 10 13
+Entering state 19
+Reading a token: Next token is token ';' (: )
+Shifting token ';' (: )
+Entering state 26
+Reducing stack by rule 8 (line 203):
+   $1 = nterm feature_list (: )
+   $2 = nterm feature (: )
+   $3 = token ';' (: )
+-> $$ = nterm feature_list (: )
+Stack now 0 1 5 10
+Entering state 13
+Reading a token: Next token is token OBJECTID (: )
+Shifting token OBJECTID (: )
+Entering state 17
+Reading a token: Next token is token '(' (: )
+Shifting token '(' (: )
+Entering state 23
+Reading a token: Next token is token ')' (: )
+Reducing stack by rule 14 (line 240):
+-> $$ = nterm formal_list (: )
+Stack now 0 1 5 10 13 17 23
+Entering state 30
+Next token is token ')' (: )
+Shifting token ')' (: )
+Entering state 37
+Reading a token: Next token is token ':' (: )
+Shifting token ':' (: )
+Entering state 42
+Reading a token: Next token is token TYPEID (: )
+Shifting token TYPEID (: )
+Entering state 59
+Reading a token: Next token is token '{' (: )
+Shifting token '{' (: )
+Entering state 84
+Reading a token: Next token is token INT_CONST (: )
+Shifting token INT_CONST (: )
+Entering state 51
+Reducing stack by rule 41 (line 374):
+   $1 = token INT_CONST (: )
+-> $$ = nterm expr (: )
+Stack now 0 1 5 10 13 17 23 30 37 42 59 84
+Entering state 107
+Reading a token: Next token is token '}' (: )
+Shifting token '}' (: )
+Entering state 119
+Reducing stack by rule 10 (line 216):
+   $1 = token OBJECTID (: )
+   $2 = token '(' (: )
+   $3 = nterm formal_list (: )
+   $4 = token ')' (: )
+   $5 = token ':' (: )
+   $6 = token TYPEID (: )
+   $7 = token '{' (: )
+   $8 = nterm expr (: )
+   $9 = token '}' (: )
+-> $$ = nterm feature (: )
+Stack now 0 1 5 10 13
+Entering state 19
+Reading a token: Next token is token ';' (: )
+Shifting token ';' (: )
+Entering state 26
+Reducing stack by rule 8 (line 203):
+   $1 = nterm feature_list (: )
+   $2 = nterm feature (: )
+   $3 = token ';' (: )
+-> $$ = nterm feature_list (: )
+Stack now 0 1 5 10
+Entering state 13
+Reading a token: Next token is token '}' (: )
+Shifting token '}' (: )
+Entering state 18
+Reading a token: Next token is token ';' (: )
+Shifting token ';' (: )
+Entering state 25
+Reducing stack by rule 4 (line 181):
+   $1 = token CLASS (: )
+   $2 = token TYPEID (: )
+   $3 = token '{' (: )
+   $4 = nterm feature_list (: )
+   $5 = token '}' (: )
+   $6 = token ';' (: )
+-> $$ = nterm class (: )
+Stack now 0
+Entering state 4
+Reducing stack by rule 2 (line 172):
+   $1 = nterm class (: )
+-> $$ = nterm class_list (: )
+Stack now 0
+Entering state 3
+Reading a token: Now at end of input.
+Reducing stack by rule 1 (line 166):
+   $1 = nterm class_list (: )
+-> $$ = nterm program (: )
+Stack now 0
+Entering state 2
+Now at end of input.
+Shifting token $end (: )
+Entering state 6
+Stack now 0 2 6
+Cleanup: popping token $end (: )
+Cleanup: popping nterm program (: )
+Compilation halted due to lex and parse errors
