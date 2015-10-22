@@ -147,11 +147,18 @@
     %type <expressions> list_of_expr_args
     %type <expressions> expr_args_list 
     %type <cases> case_labels
+    
     /* Precedence declarations go here. */
+    %left ASSIGN
+    %left NOT
     %left '<' '=' LE
     %left '+' '-'
     %left '*' '/'
     %left LET
+    %left ISVOID
+    %left '~'
+    %left '@'
+    %left '.'
     %%
     	/* 
     		Save the root of the abstract syntax tree in a global variable.
@@ -176,7 +183,8 @@
 	}
     	| CLASS TYPEID INHERITS TYPEID '{' feature_list '}' ';' {
 		$$ = class_($2,$4,$6,stringtable.add_string(curr_filename));
-	};
+	}
+	;
     
 	/* Feature list may be empty, but no empty features in list. */
 	feature_list: 
@@ -186,6 +194,10 @@
 	| feature_list feature ';'
 	{
 		$$ = append_Features($1, single_Features($2));
+	}
+	| feature_list error ';'
+	{
+		yyerrok;
 	}
 	;
 
@@ -224,7 +236,8 @@
 	}
 	| formal ',' list_of_formals {
 		$$ = append_Formals(single_Formals($1), $3);
-	};
+	}
+	;
 
 	formal: OBJECTID ':' TYPEID
 	{
@@ -247,7 +260,8 @@
 	}
 	| expr ',' list_of_expr_args {
 		$$ = append_Expressions(single_Expressions($1), $3);
-	};
+	}
+	;
 
 	/* Let ids optional */
 	let_ids_opt: let_id_opt let_ids_opt {
@@ -262,6 +276,9 @@
 	let_id_opt: ',' OBJECTID ':' TYPEID let_init_opt {
 		assign($2, $5);
 		$$ = let($2, $4, $5, no_expr());
+	}
+	| ',' error {
+		yyerrok;
 	}
 	;
 
@@ -284,8 +301,15 @@
 	;
 
 	/* Expression productions */
+
 	expr: OBJECTID ASSIGN expr{
 		$$ = assign($1, $3); 
+	}
+	| expr '.' OBJECTID '(' expr_args_list ')' {
+		$$ = static_dispatch($1, (Entry*)$1, $3, $5);	
+	}
+	| expr '@' TYPEID '.' OBJECTID '(' expr_args_list ')' {
+		$$ = static_dispatch($1, $3, $5, $7);
 	}
 	| OBJECTID '(' expr_args_list ')' {
 		$$ = dispatch(object(cur_class_id), $1, $3) ;
@@ -356,7 +380,7 @@
 	| ISVOID expr {
 		$$ = isvoid($2);
 	}
-	| NEW OBJECTID {
+	| NEW TYPEID {
 		$$ = new_($2);
 	}
 	| '{' expr_list '}' {
@@ -371,6 +395,10 @@
 	| expr ';' expr_list
 	{
 		$$ = append_Expressions(single_Expressions($1), $3);
+	}
+	| error ';' expr_list
+	{
+		yyerrok;
 	}
 	;
 
